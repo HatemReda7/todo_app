@@ -31,9 +31,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: HomeScreen.routeName,
       routes: {
-        HomeScreen.routeName : (context) => HomeScreen(),
-        SettingsTab.routeName : (context) => SettingsTab(),
-        ToDOListTab.routeName : (context) => ToDOListTab(),
+        HomeScreen.routeName : (context) => const HomeScreen(),
+        SettingsTab.routeName : (context) => const SettingsTab(),
+        ToDOListTab.routeName : (context) => const ToDOListTab(),
       },
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,

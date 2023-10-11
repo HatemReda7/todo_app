@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Shared/styles/Colors.dart';
 
 class MyThemeData {
@@ -9,7 +8,7 @@ class MyThemeData {
       indicatorColor: Colors.black,
       shadowColor: Colors.white,
       scaffoldBackgroundColor: mint,
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: Colors.transparent,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: primary,
@@ -18,14 +17,14 @@ class MyThemeData {
         showSelectedLabels: false,
         showUnselectedLabels: false,
       ),
-      bottomAppBarTheme: BottomAppBarTheme(elevation: 0, color: Colors.white));
+      bottomAppBarTheme: const BottomAppBarTheme(elevation: 0, color: Colors.white));
   static ThemeData darkTheme = ThemeData(
       primaryColor: darkPrimaryColor,
       cardColor: darkGreyColor,
       indicatorColor: Colors.white,
       shadowColor: Colors.black,
       scaffoldBackgroundColor: darkSecondaryColor,
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: Colors.transparent,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: primary,
@@ -34,7 +33,7 @@ class MyThemeData {
         showSelectedLabels: false,
         showUnselectedLabels: false,
       ),
-      bottomAppBarTheme: BottomAppBarTheme(elevation: 0, color: darkGreyColor));
+      bottomAppBarTheme: const BottomAppBarTheme(elevation: 0, color: darkGreyColor));
 }
 
 //colorScheme: ColorScheme(

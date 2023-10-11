@@ -9,13 +9,15 @@ import 'package:provider/provider.dart';
 class ToDOListTab extends StatelessWidget {
   static const String routeName="To DO List Tab";
 
+  const ToDOListTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     var pro= Provider.of<MyProvider>(context);
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.symmetric(vertical: 35,horizontal: 25),
+          padding: const EdgeInsets.symmetric(vertical: 35,horizontal: 25),
           height: 100,
           width: double.infinity,
           color: primary,
@@ -23,8 +25,8 @@ class ToDOListTab extends StatelessWidget {
         ),
         CalendarTimeline(
           initialDate: DateTime.now(),
-          firstDate: DateTime.now().subtract(Duration(days: 365)),
-          lastDate: DateTime.now().add(Duration(days: 365)),
+          firstDate: DateTime.now().subtract(const Duration(days: 365)),
+          lastDate: DateTime.now().add(const Duration(days: 365)),
           onDateSelected: (date) => print(date),
           leftMargin: 20,
           monthColor: Theme.of(context).indicatorColor,
@@ -37,7 +39,7 @@ class ToDOListTab extends StatelessWidget {
         ),
         Expanded(
           child: ListView.builder(itemBuilder: (context, index) {
-            return TaskItem();
+            return const TaskItem();
           },itemCount: 8,),
         )
       ],

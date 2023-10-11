@@ -24,7 +24,7 @@ class TaskItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Column(
@@ -34,14 +34,14 @@ class TaskItem extends StatelessWidget {
                   Text(AppLocalizations.of(context)!.taskDescription,style: GoogleFonts.poppins(color: primary,fontSize: 14,fontWeight: FontWeight.w400),),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               ElevatedButton(
                   onPressed: () {},
                   style: ButtonStyle(
-                    iconSize: MaterialStatePropertyAll(40),
+                    iconSize: const MaterialStatePropertyAll(40),
                       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)))),
-                  child: Icon(Icons.done,))
+                  child: const Icon(Icons.done,))
             ],
           ),
         ),

@@ -4,6 +4,8 @@ import 'package:islami_app/Shared/styles/Colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddTaskBottomSheet extends StatefulWidget {
+  const AddTaskBottomSheet({super.key});
+
   @override
   State<AddTaskBottomSheet> createState() => _AddTaskBottomSheetState();
 }
@@ -32,45 +34,45 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                   fontWeight: FontWeight.w700,
                   fontSize: 18),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             TextFormField(
               controller: titleController,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: primary),
+                  borderSide: const BorderSide(color: primary),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: primary),
+                  borderSide: const BorderSide(color: primary),
                 ),
                 hintText: AppLocalizations.of(context)!.enterTaskTitle,
                 hintStyle: GoogleFonts.inter(
-                    color: Color(0xffA9A9A9).withOpacity(.61),
+                    color: const Color(0xffA9A9A9).withOpacity(.61),
                     fontWeight: FontWeight.w400,
                     fontSize: 20),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             TextFormField(
               controller: descriptionController,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: primary),
+                  borderSide: const BorderSide(color: primary),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: primary),
+                  borderSide: const BorderSide(color: primary),
                 ),
                 hintText: AppLocalizations.of(context)!.enterTaskDescription,
                 hintStyle: GoogleFonts.inter(
-                    color: Color(0xffA9A9A9).withOpacity(.61),
+                    color: const Color(0xffA9A9A9).withOpacity(.61),
                     fontWeight: FontWeight.w400,
                     fontSize: 20),
               ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Text(
               AppLocalizations.of(context)!.selectTime,
               style: GoogleFonts.inter(
@@ -78,7 +80,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                   fontWeight: FontWeight.w400,
                   fontSize: 20),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             InkWell(
               onTap: () {
                 selectDate();
@@ -92,7 +94,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                     fontSize: 20),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             ElevatedButton(
@@ -112,7 +114,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime.now(),
-        lastDate: DateTime.now().add(Duration(days: 365)));
+        lastDate: DateTime.now().add(const Duration(days: 365)));
 
     if(chosenDate==null){
       return;

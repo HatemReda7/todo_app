@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/Shared/styles/Colors.dart';
 import 'package:islami_app/tabs/settings/Settings_Tab.dart';
 import 'package:islami_app/tabs/tasks/Add_Task_BottomSheet.dart';
 import 'package:islami_app/tabs/tasks/To_Do_List_Tab.dart';
@@ -7,12 +6,14 @@ import 'package:islami_app/tabs/tasks/To_Do_List_Tab.dart';
 class HomeScreen extends StatefulWidget {
   static const String routeName = "Home Screen";
 
+  const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Widget> tabs = [ToDOListTab(), SettingsTab()];
+  List<Widget> tabs = [const ToDOListTab(), const SettingsTab()];
 
   int index=0;
 
@@ -28,13 +29,12 @@ class _HomeScreenState extends State<HomeScreen> {
         shape: CircleBorder(
           side: BorderSide(color: Theme.of(context).cardColor,width: 3)
         ),
-      child: Icon(Icons.add),
+      child: const Icon(Icons.add,size: 30,),
       ),
       bottomNavigationBar: BottomAppBar(
-
         notchMargin: 8,
         height: 80,
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         child: BottomNavigationBar(
           backgroundColor: Colors.transparent,
             onTap: (value) {
@@ -44,9 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
               });
             },
             currentIndex: index,
-            items: [
-          BottomNavigationBarItem(icon: Icon(Icons.list), label: ""),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
+            items: const [
+           BottomNavigationBarItem(icon: Icon(Icons.list), label: ""),
+           BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
         ]),
       ),
     );
@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context, builder: (context) {
       return Padding(
         padding:  EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-        child: AddTaskBottomSheet(),
+        child: const AddTaskBottomSheet(),
       );
     },);
   }
