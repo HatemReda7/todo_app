@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/Screens/SplashScreen.dart';
 import 'package:islami_app/Screens/homescreen.dart';
 import 'package:islami_app/Shared/styles/myThemeData.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -29,8 +30,9 @@ class MyApp extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(pro.languageCode),
       debugShowCheckedModeBanner: false,
-      initialRoute: HomeScreen.routeName,
+      initialRoute: SplashScreen.routeName,
       routes: {
+        SplashScreen.routeName : (context) => const SplashScreen(),
         HomeScreen.routeName : (context) => const HomeScreen(),
         SettingsTab.routeName : (context) => const SettingsTab(),
         ToDOListTab.routeName : (context) => const ToDOListTab(),
