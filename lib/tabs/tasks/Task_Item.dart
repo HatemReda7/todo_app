@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Shared/styles/Colors.dart';
 
 class TaskItem extends StatelessWidget {
@@ -28,8 +29,8 @@ class TaskItem extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Task Title"),
-                  Text("Task Description"),
+                  Text("Task Title",style: GoogleFonts.poppins(color: primary,fontSize: 18,fontWeight: FontWeight.w700),),
+                  Text("Task Description",style: GoogleFonts.poppins(color: primary,fontSize: 14,fontWeight: FontWeight.w400),),
                 ],
               ),
               Spacer(),

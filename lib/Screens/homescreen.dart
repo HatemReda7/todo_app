@@ -26,14 +26,14 @@ class _HomeScreenState extends State<HomeScreen> {
         showSheet();
       },
         shape: CircleBorder(
-          side: BorderSide(color: Colors.white,width: 3)
+          side: BorderSide(color: Theme.of(context).cardColor,width: 3)
         ),
       child: Icon(Icons.add),
       ),
       bottomNavigationBar: BottomAppBar(
+
         notchMargin: 8,
         height: 80,
-        color: Colors.white,
         shape: CircularNotchedRectangle(),
         child: BottomNavigationBar(
           backgroundColor: Colors.transparent,

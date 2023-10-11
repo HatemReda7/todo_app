@@ -15,98 +15,93 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(18.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            "Add New Task",
-            textAlign: TextAlign.center,
-            style: GoogleFonts.poppins(
-                color: Color(0xff383838),
-                fontWeight: FontWeight.w700,
-                fontSize: 18),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          TextFormField(
-            controller: titleController,
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: primary),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: primary),
-              ),
-              hintText: "Enter Task Title",
-              hintStyle: GoogleFonts.inter(
-                  color: Color(0xffA9A9A9).withOpacity(.61),
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          TextFormField(
-            controller: descriptionController,
-            decoration: InputDecoration(
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: primary),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: primary),
-              ),
-              hintText: "Enter Task Description",
-              hintStyle: GoogleFonts.inter(
-                  color: Color(0xffA9A9A9).withOpacity(.61),
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            "Select time",
-            style: GoogleFonts.inter(
-                color: Color(0xff383838),
-                fontWeight: FontWeight.w400,
-                fontSize: 20),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          InkWell(
-            onTap: () {
-              selectDate();
-            },
-            child: Text(
-              selectedDate.toString().substring(0, 10),
+    return Container(
+      color: Theme.of(context).cardColor,
+      child: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              "Add New Task",
               textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                  color: Theme.of(context).indicatorColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18),
+            ),
+            SizedBox(height: 20,),
+            TextFormField(
+              controller: titleController,
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(color: primary),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(color: primary),
+                ),
+                hintText: "Enter Task Title",
+                hintStyle: GoogleFonts.inter(
+                    color: Color(0xffA9A9A9).withOpacity(.61),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20),
+              ),
+            ),
+            SizedBox(height: 20,),
+            TextFormField(
+              controller: descriptionController,
+              decoration: InputDecoration(
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(color: primary),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(color: primary),
+                ),
+                hintText: "Enter Task Description",
+                hintStyle: GoogleFonts.inter(
+                    color: Color(0xffA9A9A9).withOpacity(.61),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20),
+              ),
+            ),
+            SizedBox(height: 20,),
+            Text(
+              "Select time",
               style: GoogleFonts.inter(
-                  color: Color(0xff383838).withOpacity(.61),
+                  color: Theme.of(context).indicatorColor,
                   fontWeight: FontWeight.w400,
                   fontSize: 20),
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          ElevatedButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)))),
-              child: Text("Add Task"))
-        ],
+            SizedBox(height: 10,),
+            InkWell(
+              onTap: () {
+                selectDate();
+              },
+              child: Text(
+                selectedDate.toString().substring(0, 10),
+                textAlign: TextAlign.center,
+                style: GoogleFonts.inter(
+                    color: Theme.of(context).indicatorColor.withOpacity(.61),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                    shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)))),
+                child: Text("Add Task"))
+          ],
+        ),
       ),
     );
   }

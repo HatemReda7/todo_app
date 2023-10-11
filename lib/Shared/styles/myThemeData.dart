@@ -4,20 +4,37 @@ import 'package:islami_app/Shared/styles/Colors.dart';
 
 class MyThemeData {
   static ThemeData lightTheme = ThemeData(
-    primaryColor: primary,
-    scaffoldBackgroundColor: mint,
-
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.white,
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: primary,
-      unselectedItemColor: Colors.grey,
-      elevation: 0,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-    )
-  );
-  static ThemeData darkTheme = ThemeData();
+      primaryColor: primary,
+      cardColor: Colors.white,
+      indicatorColor: Colors.black,
+      shadowColor: Colors.white,
+      scaffoldBackgroundColor: mint,
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: Colors.transparent,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: primary,
+        unselectedItemColor: Colors.grey,
+        elevation: 0,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+      ),
+      bottomAppBarTheme: BottomAppBarTheme(elevation: 0, color: Colors.white));
+  static ThemeData darkTheme = ThemeData(
+      primaryColor: darkPrimaryColor,
+      cardColor: darkGreyColor,
+      indicatorColor: Colors.white,
+      shadowColor: Colors.black,
+      scaffoldBackgroundColor: darkSecondaryColor,
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: Colors.transparent,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: primary,
+        unselectedItemColor: Colors.white,
+        elevation: 0,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+      ),
+      bottomAppBarTheme: BottomAppBarTheme(elevation: 0, color: darkGreyColor));
 }
 
 //colorScheme: ColorScheme(

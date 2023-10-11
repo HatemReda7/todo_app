@@ -1,3 +1,7 @@
 {
-
+  "appTitle": "To Do",
+  "language": "Language",
+  "theme": "Mode",
+  "settings": "Settings",
+  "arabic": "Arabic"
 }

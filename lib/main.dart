@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
         ToDOListTab.routeName : (context) => ToDOListTab(),
       },
       theme: MyThemeData.lightTheme,
-      themeMode: ThemeMode.light,
+      darkTheme: MyThemeData.darkTheme,
+      themeMode: pro.themeMode,
     );
   }
 }
