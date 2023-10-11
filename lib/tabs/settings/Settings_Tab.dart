@@ -28,25 +28,38 @@ class SettingsTab extends StatelessWidget {
               SizedBox(height: 20,),
               Text("Language",style: GoogleFonts.poppins(color: Color(0xff303030),fontSize: 14,fontWeight: FontWeight.w700,)),
               SizedBox(height: 10,),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                width: 319,
-                height: 48,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xff5D9CEC),width: 2)
-                ),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text("English",style: GoogleFonts.inter(color: Color(0xff5D9CEC),fontSize: 12,fontWeight: FontWeight.w400,)),
-                    ),
-                    Spacer(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Icon(Icons.arrow_drop_down,color: Color(0xff5D9CEC),),
-                    )
-                  ],
+              InkWell(
+                onTap: () {
+                  showModalBottomSheet(context: context, builder: (context) {
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text("English",),
+                        Text("Arabic"),
+                      ],
+                    );
+                  },);
+                },
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  width: 319,
+                  height: 48,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xff5D9CEC),width: 2)
+                  ),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Text("English",style: GoogleFonts.inter(color: Color(0xff5D9CEC),fontSize: 12,fontWeight: FontWeight.w400,)),
+                      ),
+                      Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Icon(Icons.arrow_drop_down,color: Color(0xff5D9CEC),),
+                      )
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 20,),

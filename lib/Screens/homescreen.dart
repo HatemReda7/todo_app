@@ -20,12 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: primary,
-        centerTitle: false,
-        title: Text("To Do"),
-      ),
       body: tabs[index],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(onPressed: () {
