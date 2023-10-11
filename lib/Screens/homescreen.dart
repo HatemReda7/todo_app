@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/tabs/Settings_Tab.dart';
-import 'package:islami_app/tabs/To_Do_List_Tab.dart';
+import 'package:islami_app/Shared/styles/Colors.dart';
+import 'package:islami_app/tabs/settings/Settings_Tab.dart';
+import 'package:islami_app/tabs/tasks/Add_Task_BottomSheet.dart';
+import 'package:islami_app/tabs/tasks/To_Do_List_Tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "Home Screen";
@@ -12,44 +14,58 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Widget> tabs = [ToDOListTab(), SettingsTab()];
 
+  int index=0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: primary,
         centerTitle: false,
-        title: Text("To Do List"),
-        backgroundColor: Color(0xff5D9CEC),
+        title: Text("To Do"),
       ),
-      body: CalendarDatePicker(
-        initialDate: DateTime.now(),
-        firstDate: DateTime.now(),
-        lastDate: DateTime.timestamp(),
-        onDateChanged: (value) {},
-      ),
+      body: tabs[index],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: CircleAvatar(
-        backgroundColor: Color(0xff5D9CEC),
-          child: Icon(
-        Icons.add,
-        color: Colors.white,
-      )),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        showSheet();
+      },
+        shape: CircleBorder(
+          side: BorderSide(color: Colors.white,width: 3)
+        ),
+      child: Icon(Icons.add),
+      ),
       bottomNavigationBar: BottomAppBar(
-        elevation: 10,
-        surfaceTintColor: Colors.transparent,
-        notchMargin: 20,
+        notchMargin: 8,
         height: 80,
-        shadowColor: Colors.transparent,
         color: Colors.white,
         shape: CircularNotchedRectangle(),
         child: BottomNavigationBar(
           backgroundColor: Colors.transparent,
             onTap: (value) {
-              Navigator.pushNamed(context, SettingsTab.routeName);
-            }, items: [
+              index=value;
+              setState(() {
+
+              });
+            },
+            currentIndex: index,
+            items: [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: ""),
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
         ]),
       ),
     );
+  }
+  
+  void showSheet(){
+    showModalBottomSheet(
+      isScrollControlled: true,
+      context: context, builder: (context) {
+      return Padding(
+        padding:  EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: AddTaskBottomSheet(),
+      );
+    },);
   }
 }

@@ -4,8 +4,8 @@ import 'package:islami_app/Shared/styles/myThemeData.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/preference_helper.dart';
 import 'package:islami_app/providers/my_provider.dart';
-import 'package:islami_app/tabs/Settings_Tab.dart';
-import 'package:islami_app/tabs/To_Do_List_Tab.dart';
+import 'package:islami_app/tabs/settings/Settings_Tab.dart';
+import 'package:islami_app/tabs/tasks/To_Do_List_Tab.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
         SettingsTab.routeName : (context) => SettingsTab(),
         ToDOListTab.routeName : (context) => ToDOListTab(),
       },
+      theme: MyThemeData.lightTheme,
       themeMode: ThemeMode.light,
     );
   }
