@@ -3,5 +3,12 @@
   "language": "Language",
   "theme": "Mode",
   "settings": "Settings",
+  "taskTitle":"Task Title",
+  "taskDescription":"Task Description",
+  "selectTime":"Select time",
+  "enterTaskDescription":"Enter Task Description",
+  "enterTaskTitle":"Enter Task Title",
+  "addNewTask":"Add New Task",
+  "addTask":"Add Task",
   "arabic": "Arabic"
 }

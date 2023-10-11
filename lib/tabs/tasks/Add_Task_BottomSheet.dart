@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Shared/styles/Colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddTaskBottomSheet extends StatefulWidget {
   @override
@@ -24,7 +25,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Add New Task",
+              AppLocalizations.of(context)!.addNewTask,
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
                   color: Theme.of(context).indicatorColor,
@@ -43,7 +44,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide(color: primary),
                 ),
-                hintText: "Enter Task Title",
+                hintText: AppLocalizations.of(context)!.enterTaskTitle,
                 hintStyle: GoogleFonts.inter(
                     color: Color(0xffA9A9A9).withOpacity(.61),
                     fontWeight: FontWeight.w400,
@@ -62,7 +63,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide(color: primary),
                 ),
-                hintText: "Enter Task Description",
+                hintText: AppLocalizations.of(context)!.enterTaskDescription,
                 hintStyle: GoogleFonts.inter(
                     color: Color(0xffA9A9A9).withOpacity(.61),
                     fontWeight: FontWeight.w400,
@@ -71,7 +72,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
             ),
             SizedBox(height: 20,),
             Text(
-              "Select time",
+              AppLocalizations.of(context)!.selectTime,
               style: GoogleFonts.inter(
                   color: Theme.of(context).indicatorColor,
                   fontWeight: FontWeight.w400,
@@ -99,7 +100,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                 style: ButtonStyle(
                     shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)))),
-                child: Text("Add Task"))
+                child: Text(AppLocalizations.of(context)!.addTask))
           ],
         ),
       ),
