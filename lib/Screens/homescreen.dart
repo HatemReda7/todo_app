@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami_app/tabs/settings/Settings_Tab.dart';
 import 'package:islami_app/tabs/tasks/Add_Task_BottomSheet.dart';
 import 'package:islami_app/tabs/tasks/To_Do_List_Tab.dart';
@@ -27,13 +28,13 @@ class _HomeScreenState extends State<HomeScreen> {
         showSheet();
       },
         shape: CircleBorder(
-          side: BorderSide(color: Theme.of(context).cardColor,width: 3)
+          side: BorderSide(color: Theme.of(context).cardColor,width: 3.w)
         ),
-      child: const Icon(Icons.add,size: 30,),
+      child: Icon(Icons.add,size: 30.sp,),
       ),
       bottomNavigationBar: BottomAppBar(
-        notchMargin: 8,
-        height: 80,
+        notchMargin: 8.r,
+        height: 80.h,
         shape: const CircularNotchedRectangle(),
         child: BottomNavigationBar(
           backgroundColor: Colors.transparent,
