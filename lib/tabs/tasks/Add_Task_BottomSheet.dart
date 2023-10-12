@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Shared/styles/Colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,7 +22,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
     return Container(
       color: Theme.of(context).cardColor,
       child: Padding(
-        padding: const EdgeInsets.all(18.0),
+        padding: EdgeInsets.symmetric(vertical: 18.0.h, horizontal: 18.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
@@ -32,9 +33,9 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
               style: GoogleFonts.poppins(
                   color: Theme.of(context).indicatorColor,
                   fontWeight: FontWeight.w700,
-                  fontSize: 18),
+                  fontSize: 18.sp),
             ),
-            const SizedBox(height: 20,),
+            SizedBox(height: 20.h,),
             TextFormField(
               controller: titleController,
               decoration: InputDecoration(
@@ -50,10 +51,10 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                 hintStyle: GoogleFonts.inter(
                     color: const Color(0xffA9A9A9).withOpacity(.61),
                     fontWeight: FontWeight.w400,
-                    fontSize: 20),
+                    fontSize: 20.sp),
               ),
             ),
-            const SizedBox(height: 20,),
+            SizedBox(height: 20.h,),
             TextFormField(
               controller: descriptionController,
               decoration: InputDecoration(
@@ -69,18 +70,18 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                 hintStyle: GoogleFonts.inter(
                     color: const Color(0xffA9A9A9).withOpacity(.61),
                     fontWeight: FontWeight.w400,
-                    fontSize: 20),
+                    fontSize: 20.sp),
               ),
             ),
-            const SizedBox(height: 20,),
+            SizedBox(height: 20.h,),
             Text(
               AppLocalizations.of(context)!.selectTime,
               style: GoogleFonts.inter(
                   color: Theme.of(context).indicatorColor,
                   fontWeight: FontWeight.w400,
-                  fontSize: 20),
+                  fontSize: 20.sp),
             ),
-            const SizedBox(height: 10,),
+            SizedBox(height: 10.h,),
             InkWell(
               onTap: () {
                 selectDate();
@@ -91,18 +92,16 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                 style: GoogleFonts.inter(
                     color: Theme.of(context).indicatorColor.withOpacity(.61),
                     fontWeight: FontWeight.w400,
-                    fontSize: 20),
+                    fontSize: 20.sp),
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20.h,),
             ElevatedButton(
                 onPressed: () {},
                 style: ButtonStyle(
                     shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)))),
-                child: Text(AppLocalizations.of(context)!.addTask))
+                child: Text(AppLocalizations.of(context)!.addTask,style: TextStyle(fontSize: 16.sp),))
           ],
         ),
       ),
