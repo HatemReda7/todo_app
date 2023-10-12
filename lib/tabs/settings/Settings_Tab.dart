@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Shared/styles/Colors.dart';
 import 'package:islami_app/providers/my_provider.dart';
@@ -22,25 +23,22 @@ class _SettingsTabState extends State<SettingsTab> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Container(
-          padding: const EdgeInsets.only(top: 30),
-          width: 413,
-          height: 157,
+          padding: EdgeInsets.symmetric(vertical: 50.h,horizontal: 40.w),
+          width: 413.w,
+          height: 157.h,
           decoration: const BoxDecoration(
             color: Color(0xff5D9CEC)
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 40),
-            child: Text(AppLocalizations.of(context)!.settings,style: GoogleFonts.poppins(color: Theme.of(context).shadowColor,fontSize: 22,fontWeight: FontWeight.w700,),),
-          ),
+          child: Text(AppLocalizations.of(context)!.settings,style: GoogleFonts.poppins(color: Theme.of(context).shadowColor,fontSize: 22.sp,fontWeight: FontWeight.w700,),),
         ),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
+          padding: EdgeInsets.symmetric(horizontal: 25.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 20,),
-              Text(AppLocalizations.of(context)!.language,style: GoogleFonts.poppins(color: Theme.of(context).indicatorColor,fontSize: 14,fontWeight: FontWeight.w700,)),
-              const SizedBox(height: 10,),
+              SizedBox(height: 20.h,),
+              Text(AppLocalizations.of(context)!.language,style: GoogleFonts.poppins(color: Theme.of(context).indicatorColor,fontSize: 14.sp,fontWeight: FontWeight.w700,)),
+              SizedBox(height: 10.h,),
               InkWell(
                 onTap: () {
                   showModalBottomSheet(context: context, builder: (context) {
@@ -50,7 +48,7 @@ class _SettingsTabState extends State<SettingsTab> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12,horizontal: 20),
+                            padding: EdgeInsets.symmetric(vertical: 12.h,horizontal: 20.w),
                             child: InkWell(
                               onTap: () {
                                 pro.changeLanguage("en");
@@ -60,16 +58,16 @@ class _SettingsTabState extends State<SettingsTab> {
                               },
                               child: Row(
                                 children: [
-                                  Text("English",style: GoogleFonts.poppins(color: pro.languageCode=="en"? primary:Theme.of(context).indicatorColor,fontSize: 20,fontWeight: FontWeight.w700,)),
+                                  Text("English",style: GoogleFonts.poppins(color: pro.languageCode=="en"? primary:Theme.of(context).indicatorColor,fontSize: 20.sp,fontWeight: FontWeight.w700,)),
                                   const Spacer(),
                                   pro.languageCode=="en"? const Icon(Icons.done,color: primary):const SizedBox.shrink(),
                                 ],
                               ),
                             ),
                           ),
-                          const SizedBox(height: 20,),
+                          SizedBox(height: 20.h,),
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12,horizontal: 20),
+                            padding: EdgeInsets.symmetric(vertical: 12.h,horizontal: 20.w),
                             child: InkWell(
                               onTap: () {
                                 pro.changeLanguage("ar");
@@ -79,7 +77,7 @@ class _SettingsTabState extends State<SettingsTab> {
                               },
                               child: Row(
                                 children: [
-                                  Text("عربي",style: GoogleFonts.poppins(color: pro.languageCode=="ar"? primary:Theme.of(context).indicatorColor,fontSize: 20,fontWeight: FontWeight.w700,)),
+                                  Text("عربي",style: GoogleFonts.poppins(color: pro.languageCode=="ar"? primary:Theme.of(context).indicatorColor,fontSize: 20.sp,fontWeight: FontWeight.w700,)),
                                   const Spacer(),
                                   pro.languageCode=="ar"? const Icon(Icons.done,color: primary):const SizedBox.shrink(),
                                 ],
@@ -92,31 +90,31 @@ class _SettingsTabState extends State<SettingsTab> {
                   },);
                 },
                 child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  width: 319,
-                  height: 48,
+                  margin: EdgeInsets.symmetric(horizontal: 20.w),
+                  width: 319.w,
+                  height: 48.h,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                      border: Border.all(color: const Color(0xff5D9CEC),width: 2)
+                      border: Border.all(color: const Color(0xff5D9CEC),width: 2.w)
                   ),
                   child: Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Text(pro.languageCode=="en"?"English":"عربي",style: GoogleFonts.inter(color: const Color(0xff5D9CEC),fontSize: 16,fontWeight: FontWeight.w400,)),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: Text(pro.languageCode=="en"?"English":"عربي",style: GoogleFonts.inter(color: const Color(0xff5D9CEC),fontSize: 16.sp,fontWeight: FontWeight.w400,)),
                       ),
                       const Spacer(),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Icon(Icons.arrow_drop_down,color: Color(0xff5D9CEC),),
                       )
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height: 20,),
-              Text(AppLocalizations.of(context)!.theme,style: GoogleFonts.poppins(color: Theme.of(context).indicatorColor,fontSize: 14,fontWeight: FontWeight.w700,)),
-              const SizedBox(height: 10,),
+              SizedBox(height: 20.h,),
+              Text(AppLocalizations.of(context)!.theme,style: GoogleFonts.poppins(color: Theme.of(context).indicatorColor,fontSize: 14.sp,fontWeight: FontWeight.w700,)),
+              SizedBox(height: 10.h,),
               InkWell(
                 onTap: () {
                   showModalBottomSheet(context: context, builder: (context) {
@@ -126,7 +124,7 @@ class _SettingsTabState extends State<SettingsTab> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12,horizontal: 20),
+                            padding: EdgeInsets.symmetric(vertical: 12.h,horizontal: 20.w),
                             child: InkWell(
                               onTap: () {
                                 pro.changeTheme(ThemeMode.light);
@@ -136,16 +134,16 @@ class _SettingsTabState extends State<SettingsTab> {
                               },
                               child: Row(
                                 children: [
-                                  Text("Light",style: GoogleFonts.poppins(color: pro.themeMode==ThemeMode.light? primary:Theme.of(context).indicatorColor,fontSize: 20,fontWeight: FontWeight.w700,)),
+                                  Text("Light",style: GoogleFonts.poppins(color: pro.themeMode==ThemeMode.light? primary:Theme.of(context).indicatorColor,fontSize: 20.sp,fontWeight: FontWeight.w700,)),
                                   const Spacer(),
                                   pro.themeMode==ThemeMode.light? const Icon(Icons.done,color: primary):const SizedBox.shrink(),
                                 ],
                               ),
                             ),
                           ),
-                          const SizedBox(height: 20,),
+                          SizedBox(height: 20.h,),
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12,horizontal: 20),
+                            padding: EdgeInsets.symmetric(vertical: 12.h,horizontal: 20.w),
                             child: InkWell(
                               onTap: () {
                                 pro.changeTheme(ThemeMode.dark);
@@ -155,7 +153,7 @@ class _SettingsTabState extends State<SettingsTab> {
                               },
                               child: Row(
                                 children: [
-                                  Text("Dark",style: GoogleFonts.poppins(color: pro.themeMode==ThemeMode.dark? primary:Theme.of(context).indicatorColor,fontSize: 20,fontWeight: FontWeight.w700,)),
+                                  Text("Dark",style: GoogleFonts.poppins(color: pro.themeMode==ThemeMode.dark? primary:Theme.of(context).indicatorColor,fontSize: 20.sp,fontWeight: FontWeight.w700,)),
                                   const Spacer(),
                                   pro.themeMode==ThemeMode.dark? const Icon(Icons.done,color: primary):const SizedBox.shrink(),
                                 ],
@@ -168,22 +166,22 @@ class _SettingsTabState extends State<SettingsTab> {
                   },);
                 },
                 child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 20),
-                  width: 319,
-                  height: 48,
+                  margin: EdgeInsets.symmetric(horizontal: 20.w),
+                  width: 319.w,
+                  height: 48.h,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      border: Border.all(color: const Color(0xff5D9CEC),width: 2)
+                      border: Border.all(color: const Color(0xff5D9CEC),width: 2.w)
                   ),
                   child: Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Text(pro.themeMode==ThemeMode.light?"Light":"Dark",style: GoogleFonts.inter(color: const Color(0xff5D9CEC),fontSize: 16,fontWeight: FontWeight.w400,)),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        child: Text(pro.themeMode==ThemeMode.light?"Light":"Dark",style: GoogleFonts.inter(color: const Color(0xff5D9CEC),fontSize: 16.sp,fontWeight: FontWeight.w400,)),
                       ),
                       const Spacer(),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
                         child: Icon(Icons.arrow_drop_down,color: Color(0xff5D9CEC),),
                       )
                     ],
