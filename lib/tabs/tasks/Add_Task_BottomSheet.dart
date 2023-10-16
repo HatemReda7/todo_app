@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami_app/Models/Task_Model.dart';
+import 'package:islami_app/Shared/firebase/FireBase_Functions.dart';
 import 'package:islami_app/Shared/styles/Colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_app/tabs/tasks/To_Do_List_Tab.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/my_provider.dart';
 
 class AddTaskBottomSheet extends StatefulWidget {
   const AddTaskBottomSheet({super.key});
@@ -19,6 +25,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+    var pro= Provider.of<MyProvider>(context);
     return Container(
       color: Theme.of(context).cardColor,
       child: Padding(
@@ -37,6 +44,10 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
             ),
             SizedBox(height: 20.h,),
             TextFormField(
+              style: GoogleFonts.inter(
+                  color: pro.themeMode==ThemeMode.light? Colors.black : Colors.white,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16.sp),
               controller: titleController,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -56,6 +67,10 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
             ),
             SizedBox(height: 20.h,),
             TextFormField(
+              style: GoogleFonts.inter(
+            color: pro.themeMode==ThemeMode.light? Colors.black : Colors.white,
+                fontWeight: FontWeight.w400,
+                fontSize: 16.sp),
               controller: descriptionController,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
@@ -97,7 +112,11 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
             ),
             SizedBox(height: 20.h,),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  TaskModel taskModel= TaskModel(title: titleController.text, description: descriptionController.text, date: selectedDate.millisecondsSinceEpoch);
+                  FirebaseFunctions.addTask(taskModel);
+                  Navigator.pop(context, (route) => false);
+                },
                 style: ButtonStyle(
                     shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)))),

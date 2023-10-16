@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami_app/Screens/SplashScreen.dart';
@@ -10,9 +11,13 @@ import 'package:islami_app/tabs/settings/Settings_Tab.dart';
 import 'package:islami_app/tabs/tasks/To_Do_List_Tab.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   PrefsHelper.prefs = await SharedPreferences.getInstance();
   runApp(ChangeNotifierProvider(
       create: (context) => MyProvider()..init(), child: const MyApp()));
