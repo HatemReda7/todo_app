@@ -63,6 +63,10 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: primary),
                   ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Colors.red),
+                  ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: primary),
@@ -91,6 +95,10 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: primary),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: const BorderSide(color: Colors.red),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),

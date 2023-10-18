@@ -8,6 +8,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/preference_helper.dart';
 import 'package:islami_app/providers/my_provider.dart';
 import 'package:islami_app/tabs/settings/Settings_Tab.dart';
+import 'package:islami_app/tabs/tasks/TaskEditTab.dart';
 import 'package:islami_app/tabs/tasks/To_Do_List_Tab.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
           HomeScreen.routeName: (context) => const HomeScreen(),
           SettingsTab.routeName: (context) => const SettingsTab(),
           ToDOListTab.routeName: (context) => const ToDOListTab(),
+          TaskEdit.routeName: (context) => TaskEdit(),
         },
         theme: MyThemeData.lightTheme,
         darkTheme: MyThemeData.darkTheme,
