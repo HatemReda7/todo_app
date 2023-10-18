@@ -4,9 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Shared/styles/Colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import '../../Models/Task_Model.dart';
 
 class TaskItem extends StatelessWidget {
-  const TaskItem({super.key});
+  TaskModel task;
+  TaskItem({required this.task, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class TaskItem extends StatelessWidget {
                 Container(
                   height: 62.h,
                   width: 4.w,
-                  decoration: BoxDecoration( color: primary, borderRadius: BorderRadius.circular(18),
+                  decoration: BoxDecoration( color: task.isDone==false?primary:Color(0xff61E757), borderRadius: BorderRadius.circular(18),
                   ),
                 ),
                 SizedBox(width: 20.w,),
@@ -46,29 +48,36 @@ class TaskItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      AppLocalizations.of(context)!.taskTitle,
+                      "${task.title}",
                       style: GoogleFonts.poppins(
-                          color: primary,
+                          color: task.isDone==false?primary:Color(0xff61E757),
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
-                      AppLocalizations.of(context)!.taskDescription,
+                      "${task.description}",
                       style: GoogleFonts.poppins(
-                          color: primary,
+                          color: task.isDone==false?primary:Color(0xff61E757),
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400),
                     ),
                   ],
                 ),
                 const Spacer(),
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                        iconSize: MaterialStatePropertyAll(40.sp),
-                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
-                    child: const Icon(Icons.done,)
-                )
+               task.isDone==false?InkWell(
+                 onTap: () {
+                   task.isDone=true;
+                 },
+                 child: Container(
+                   width: 69.w,
+                   height: 34.h,
+                   alignment: Alignment.center,
+                   decoration: BoxDecoration(
+                     borderRadius: BorderRadius.circular(10),
+                       color: Color(0xff5D9CEC)
+                     ),
+                     child: Icon(Icons.check,size: 35.sp,color: Colors.white,fill: 0.5,)),
+               ): Text("Done!",style: TextStyle(color: Color(0xff61E757),fontSize: 22,fontWeight: FontWeight.w700),)
               ],
             ),
           ),

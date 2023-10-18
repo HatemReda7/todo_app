@@ -129,7 +129,8 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
               ElevatedButton(
                   onPressed: () {
                     if(formKey.currentState!.validate()){
-                      TaskModel taskModel= TaskModel(title: titleController.text, description: descriptionController.text, date: selectedDate.millisecondsSinceEpoch);
+                      TaskModel taskModel= TaskModel(title: titleController.text, description: descriptionController.text,
+                          date: DateUtils.dateOnly(selectedDate).millisecondsSinceEpoch);
                       FirebaseFunctions.addTask(taskModel);
                       Navigator.pop(context, (route) => false);
                     }

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:islami_app/Models/Task_Model.dart';
 
 class FirebaseFunctions {
@@ -19,5 +20,9 @@ class FirebaseFunctions {
     var docRef= collection.doc();
     taskModel.id=docRef.id;
     docRef.set(taskModel);
+  }
+
+  static Stream<QuerySnapshot<TaskModel>> getTasks(DateTime dateTime){
+    return getTaskCollection().where("date",isEqualTo: DateUtils.dateOnly(dateTime).millisecondsSinceEpoch).orderBy("title").snapshots();
   }
 }
