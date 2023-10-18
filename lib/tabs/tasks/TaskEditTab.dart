@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:islami_app/Models/Task_Model.dart';
 import 'package:islami_app/Shared/firebase/FireBase_Functions.dart';
 import 'package:islami_app/Shared/styles/Colors.dart';
-import 'package:islami_app/tabs/tasks/To_Do_List_Tab.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../providers/my_provider.dart';
 
 class TaskEdit extends StatefulWidget {
   static const String routeName="task edit";
+
+  const TaskEdit({super.key});
 
   @override
   State<TaskEdit> createState() => _TaskEditState();
@@ -30,20 +30,19 @@ class _TaskEditState extends State<TaskEdit> {
     var args = ModalRoute.of(context)?.settings.arguments as TaskModel;
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(size: 30,color: pro.themeMode==ThemeMode.light?Colors.white:Colors.black),
+        iconTheme: IconThemeData(size: 30.sp,color: pro.themeMode==ThemeMode.light?Colors.white:Colors.black),
         toolbarHeight: 100.h,
         title: Text("To Do",style: GoogleFonts.poppins(color: Theme.of(context).shadowColor,fontSize: 22.sp,fontWeight: FontWeight.w700,),),
       ),
-      body: Container(
-        height: 688,
+      body: SizedBox(
+        height: 688.h,
         child: Padding(
-          padding: const EdgeInsets.all(30),
+          padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
           child: Card(
             color: pro.themeMode==ThemeMode.light?Colors.white:darkGreyColor,
-            margin: const EdgeInsets.only(bottom: 40),
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18)),
-            elevation: 20,
+                borderRadius: BorderRadius.circular(18.r)),
+            elevation: 20.sh,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 18.0.h, horizontal: 12.w),
               child: SingleChildScrollView(
@@ -75,15 +74,15 @@ class _TaskEditState extends State<TaskEdit> {
                         controller: titleController,
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.r),
                             borderSide: const BorderSide(color: primary),
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.r),
                             borderSide: const BorderSide(color: Colors.red),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.r),
                             borderSide: const BorderSide(color: primary),
                           ),
                           hintText: args.title,
@@ -108,15 +107,15 @@ class _TaskEditState extends State<TaskEdit> {
                         controller: descriptionController,
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.r),
                             borderSide: const BorderSide(color: primary),
                           ),
                           errorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12).r,
                             borderSide: const BorderSide(color: Colors.red),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(12.r),
                             borderSide: const BorderSide(color: primary),
                           ),
                           hintText: args.description,
@@ -160,15 +159,15 @@ class _TaskEditState extends State<TaskEdit> {
                           }
                         },
                         child: Container(
-                          margin: EdgeInsets.all(20),
+                          margin: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
                           width: 240.w,
                           height: 45.h,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25),
+                            borderRadius: BorderRadius.circular(25.r),
                             color: primary
                           ),
-                          child: Text("Save Changes",style: GoogleFonts.inter(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w400),),
+                          child: Text("Save Changes",style: GoogleFonts.inter(color: Colors.white,fontSize: 18.sp,fontWeight: FontWeight.w400),),
                         ),
                       )
                     ],

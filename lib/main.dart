@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           HomeScreen.routeName: (context) => const HomeScreen(),
           SettingsTab.routeName: (context) => const SettingsTab(),
           ToDOListTab.routeName: (context) => const ToDOListTab(),
-          TaskEdit.routeName: (context) => TaskEdit(),
+          TaskEdit.routeName: (context) => const TaskEdit(),
         },
         theme: MyThemeData.lightTheme,
         darkTheme: MyThemeData.darkTheme,

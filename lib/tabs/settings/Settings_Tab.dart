@@ -106,7 +106,7 @@ class _SettingsTabState extends State<SettingsTab> {
                       const Spacer(),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
-                        child: Icon(Icons.arrow_drop_down,color: Color(0xff5D9CEC),),
+                        child: const Icon(Icons.arrow_drop_down,color: Color(0xff5D9CEC),),
                       )
                     ],
                   ),
@@ -182,7 +182,7 @@ class _SettingsTabState extends State<SettingsTab> {
                       const Spacer(),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20.w),
-                        child: Icon(Icons.arrow_drop_down,color: Color(0xff5D9CEC),),
+                        child: const Icon(Icons.arrow_drop_down,color: Color(0xff5D9CEC),),
                       )
                     ],
                   ),

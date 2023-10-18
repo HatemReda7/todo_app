@@ -55,10 +55,10 @@ class _ToDOListTabState extends State<ToDOListTab> {
         StreamBuilder(stream: FirebaseFunctions.getTasks(selectedDate),
             builder: (context, snapshot) {
               if (snapshot.connectionState== ConnectionState.waiting){
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               }
               if(snapshot.hasError){
-                return Center(child: Text("Something went wrong",style: TextStyle(color: Colors.white),));
+                return const Center(child: Text("Something went wrong",style: TextStyle(color: Colors.white),));
               }
               List<TaskModel> tasks= snapshot.data?.docs.map((e) => e.data()).toList()??[];
               return Expanded(

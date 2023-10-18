@@ -5,7 +5,6 @@ import 'package:islami_app/Models/Task_Model.dart';
 import 'package:islami_app/Shared/firebase/FireBase_Functions.dart';
 import 'package:islami_app/Shared/styles/Colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islami_app/tabs/tasks/To_Do_List_Tab.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/my_provider.dart';
@@ -60,15 +59,15 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                 controller: titleController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                     borderSide: const BorderSide(color: primary),
                   ),
                   errorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                     borderSide: const BorderSide(color: Colors.red),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                     borderSide: const BorderSide(color: primary),
                   ),
                   hintText: AppLocalizations.of(context)!.enterTaskTitle,
@@ -93,15 +92,15 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                 controller: descriptionController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                     borderSide: const BorderSide(color: primary),
                   ),
                   errorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                     borderSide: const BorderSide(color: Colors.red),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                     borderSide: const BorderSide(color: primary),
                   ),
                   hintText: AppLocalizations.of(context)!.enterTaskDescription,
@@ -145,7 +144,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                   },
                   style: ButtonStyle(
                       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)))),
+                          borderRadius: BorderRadius.circular(10.r)))),
                   child: Text(AppLocalizations.of(context)!.addTask,style: TextStyle(fontSize: 16.sp),))
             ],
           ),
