@@ -2,12 +2,12 @@ import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islami_app/Models/Task_Model.dart';
-import 'package:islami_app/Shared/firebase/FireBase_Functions.dart';
-import 'package:islami_app/Shared/styles/Colors.dart';
-import 'package:islami_app/providers/my_provider.dart';
-import 'package:islami_app/tabs/tasks/Task_Item.dart';
 import 'package:provider/provider.dart';
+import '../../Models/Task_Model.dart';
+import '../../Shared/firebase/FireBase_Functions.dart';
+import '../../Shared/styles/Colors.dart';
+import '../../providers/my_provider.dart';
+import 'Task_Item.dart';
 
 class ToDOListTab extends StatefulWidget {
   static const String routeName="To DO List Tab";
@@ -53,20 +53,20 @@ class _ToDOListTabState extends State<ToDOListTab> {
           locale: pro.languageCode,
         ),
         StreamBuilder(stream: FirebaseFunctions.getTasks(selectedDate),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState== ConnectionState.waiting){
-                return const Center(child: CircularProgressIndicator());
-              }
-              if(snapshot.hasError){
-                return const Center(child: Text("Something went wrong",style: TextStyle(color: Colors.white),));
-              }
-              List<TaskModel> tasks= snapshot.data?.docs.map((e) => e.data()).toList()??[];
-              return Expanded(
-                child: ListView.builder(itemBuilder: (context, index) {
-                  return TaskItem(task: tasks[index],);
-                },itemCount: tasks.length,),
-              );
-            },
+          builder: (context, snapshot) {
+            if (snapshot.connectionState== ConnectionState.waiting){
+              return const Center(child: CircularProgressIndicator());
+            }
+            if(snapshot.hasError){
+              return const Center(child: Text("Something went wrong",style: TextStyle(color: Colors.white),));
+            }
+            List<TaskModel> tasks= snapshot.data?.docs.map((e) => e.data()).toList()??[];
+            return Expanded(
+              child: ListView.builder(itemBuilder: (context, index) {
+                return TaskItem(task: tasks[index],);
+              },itemCount: tasks.length,),
+            );
+          },
         )
       ],
     );
