@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islami_app/Shared/firebase/FireBase_Functions.dart';
-import 'package:islami_app/Shared/styles/Colors.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:islami_app/tabs/tasks/TaskEditTab.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Models/Task_Model.dart';
+import '../../Shared/firebase/FireBase_Functions.dart';
+import '../../providers/my_provider.dart';
+import 'TaskEditTab.dart';
 
 class TaskItem extends StatelessWidget {
   TaskModel task;
@@ -13,6 +15,7 @@ class TaskItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var pro= Provider.of<MyProvider>(context);
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 18.0.w, vertical: 8.h),
       child: Card(
@@ -20,23 +23,25 @@ class TaskItem extends StatelessWidget {
         child: Slidable(
           startActionPane: ActionPane(motion: const ScrollMotion(), children: [
             SlidableAction(
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(15.r), bottomLeft: Radius.circular(15.r)),
+              borderRadius: pro.languageCode=="en"?BorderRadius.only(topLeft: Radius.circular(15.r), bottomLeft: Radius.circular(15.r))
+                  :BorderRadius.only(topRight: Radius.circular(15.r), bottomRight: Radius.circular(15.r)),
               onPressed: (context) {
                 FirebaseFunctions.deleteTask(task.id);
               },
               backgroundColor: const Color(0xffEC4B4B),
               icon: Icons.delete,
-              label: "Delete",
+              label: AppLocalizations.of(context)!.delete,
             ),
             SlidableAction(
-              borderRadius: BorderRadius.only(topRight: Radius.circular(8.r), bottomRight: Radius.circular(8.r)),
+              borderRadius: pro.languageCode=="ar"?BorderRadius.only(topLeft: Radius.circular(15.r), bottomLeft: Radius.circular(15.r))
+                  :BorderRadius.only(topRight: Radius.circular(15.r), bottomRight: Radius.circular(15.r)),
               onPressed: (context) {
                 Navigator.pushNamed(context, TaskEdit.routeName,
-                arguments: TaskModel(title: task.title,description: task.description,date: task.date,id: task.id,isDone: task.isDone));
+                    arguments: TaskModel(title: task.title,description: task.description,date: task.date,id: task.id,isDone: task.isDone));
               },
               backgroundColor: Colors.blue,
               icon: Icons.edit,
-              label: "Edit",
+              label: AppLocalizations.of(context)!.edit,
             ),
           ]),
           child: Padding(
@@ -46,7 +51,9 @@ class TaskItem extends StatelessWidget {
                 Container(
                   height: 62.h,
                   width: 4.w,
-                  decoration: BoxDecoration( color: task.isDone==false?primary:const Color(0xff61E757), borderRadius: BorderRadius.circular(18.r),
+                  //task.isDone==false?primary:const Color(0xff61E757)
+                  decoration: BoxDecoration( color: checkColor(),
+                    borderRadius: BorderRadius.circular(18.r),
                   ),
                 ),
                 SizedBox(width: 20.w,),
@@ -56,46 +63,56 @@ class TaskItem extends StatelessWidget {
                     Text(
                       task.title,
                       style: GoogleFonts.poppins(
-                          color: task.isDone==false?primary:const Color(0xff61E757),
+                          color: checkColor(),
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
                       task.description,
                       style: GoogleFonts.poppins(
-                          color: task.isDone==false?primary:const Color(0xff61E757),
+                          color: checkColor(),
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400),
                     ),
                   ],
                 ),
                 const Spacer(),
-               task.isDone?InkWell(
-                 onTap: () {
-                   task.isDone=false;
-                   FirebaseFunctions.editTask(task);
-                 },
-                   child: Text("Done!",style: TextStyle(color: const Color(0xff61E757),fontSize: 22.sp,fontWeight: FontWeight.w700),))
-                   :InkWell(
-                 onTap: () {
-                   task.isDone=true;
-                   FirebaseFunctions.editTask(task);
-                 },
-                 child: Container(
-                   width: 69.w,
-                   height: 34.h,
-                   alignment: Alignment.center,
-                   decoration: BoxDecoration(
-                     borderRadius: BorderRadius.circular(10.r),
-                       color: const Color(0xff5D9CEC)
-                     ),
-                     child: Icon(Icons.check,size: 35.sp,color: Colors.white,fill: 0.5,)),
-               )
+                task.isDone?InkWell(
+                    onTap: () {
+                      task.isDone=false;
+                      FirebaseFunctions.editTask(task);
+                    },
+                    child: Text(AppLocalizations.of(context)!.done,style: TextStyle(color: const Color(0xff61E757),fontSize: 22.sp,fontWeight: FontWeight.w700),))
+                    :InkWell(
+                  onTap: () {
+                    task.isDone=true;
+                    FirebaseFunctions.editTask(task);
+                  },
+                  child: Container(
+                      width: 69.w,
+                      height: 34.h,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.r),
+                          color: checkColor()
+                      ),
+                      child: Icon(Icons.check,size: 35.sp,color: Colors.white,fill: 0.5,)),
+                )
               ],
             ),
           ),
         ),
       ),
     );
+  }
+  //task.date<=DateTime.now().millisecondsSinceEpoch?Colors.red:Colors.blue;
+  Color checkColor(){
+    if(task.isDone){
+      return Color(0xff61E757);
+    }else if(task.date<=DateTime.now().millisecondsSinceEpoch){
+      return Colors.red;
+    }else{
+      return Colors.blue;
+    }
   }
 }
