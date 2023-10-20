@@ -3,12 +3,15 @@
   "language": "اللغة",
   "theme": "المظهر",
   "settings": "اعدادات",
-  "taskTitle": "عنوان المهمة",
-  "taskDescription": "وصف المهمة",
   "selectTime": "اختر الوقت",
   "enterTaskDescription": "أدخل وصف المهمة",
   "enterTaskTitle": "أدخل عنوان المهمة",
   "addNewTask": "إضافة مهمة جديدة",
   "addTask": "إضافة مهمة",
+  "edit": "تعديل",
+  "delete": "مسح",
+  "done": "تم!",
+  "editTask": "تعديل المهمة",
+  "saveChanges": "حفظ التعديل",
   "arabic": "عربي"
 }
