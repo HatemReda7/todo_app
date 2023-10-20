@@ -21,11 +21,11 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
   var descriptionController = TextEditingController();
 
   var selectedDate = DateTime.now();
-  var formKey=GlobalKey<FormState>();
+  var formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    var pro= Provider.of<MyProvider>(context);
+    var pro = Provider.of<MyProvider>(context);
     return Container(
       color: Theme.of(context).cardColor,
       child: Padding(
@@ -44,16 +44,20 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                     fontWeight: FontWeight.w700,
                     fontSize: 18.sp),
               ),
-              SizedBox(height: 20.h,),
+              SizedBox(
+                height: 20.h,
+              ),
               TextFormField(
                 validator: (value) {
-                  if(value== null || value.isEmpty){
+                  if (value == null || value.isEmpty) {
                     return "Please enter Task Title";
                   }
                   return null;
                 },
                 style: GoogleFonts.inter(
-                    color: pro.themeMode==ThemeMode.light? Colors.black : Colors.white,
+                    color: pro.themeMode == ThemeMode.light
+                        ? Colors.black
+                        : Colors.white,
                     fontWeight: FontWeight.w400,
                     fontSize: 16.sp),
                 controller: titleController,
@@ -77,16 +81,20 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                       fontSize: 20.sp),
                 ),
               ),
-              SizedBox(height: 20.h,),
+              SizedBox(
+                height: 20.h,
+              ),
               TextFormField(
                 validator: (value) {
-                  if(value== null || value.isEmpty){
+                  if (value == null || value.isEmpty) {
                     return "Please enter Task Description";
                   }
                   return null;
                 },
                 style: GoogleFonts.inter(
-                    color: pro.themeMode==ThemeMode.light? Colors.black : Colors.white,
+                    color: pro.themeMode == ThemeMode.light
+                        ? Colors.black
+                        : Colors.white,
                     fontWeight: FontWeight.w400,
                     fontSize: 16.sp),
                 controller: descriptionController,
@@ -110,7 +118,9 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                       fontSize: 20.sp),
                 ),
               ),
-              SizedBox(height: 20.h,),
+              SizedBox(
+                height: 20.h,
+              ),
               Text(
                 AppLocalizations.of(context)!.selectTime,
                 style: GoogleFonts.inter(
@@ -118,7 +128,9 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                     fontWeight: FontWeight.w400,
                     fontSize: 20.sp),
               ),
-              SizedBox(height: 10.h,),
+              SizedBox(
+                height: 10.h,
+              ),
               InkWell(
                 onTap: () {
                   selectDate();
@@ -132,12 +144,17 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                       fontSize: 20.sp),
                 ),
               ),
-              SizedBox(height: 20.h,),
+              SizedBox(
+                height: 20.h,
+              ),
               ElevatedButton(
                   onPressed: () {
-                    if(formKey.currentState!.validate()){
-                      TaskModel taskModel= TaskModel(title: titleController.text, description: descriptionController.text,
-                          date: DateUtils.dateOnly(selectedDate).millisecondsSinceEpoch);
+                    if (formKey.currentState!.validate()) {
+                      TaskModel taskModel = TaskModel(
+                          title: titleController.text,
+                          description: descriptionController.text,
+                          date: DateUtils.dateOnly(selectedDate)
+                              .millisecondsSinceEpoch);
                       FirebaseFunctions.addTask(taskModel);
                       Navigator.pop(context, (route) => false);
                     }
@@ -145,7 +162,10 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
                   style: ButtonStyle(
                       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.r)))),
-                  child: Text(AppLocalizations.of(context)!.addTask,style: TextStyle(fontSize: 16.sp),))
+                  child: Text(
+                    AppLocalizations.of(context)!.addTask,
+                    style: TextStyle(fontSize: 16.sp),
+                  ))
             ],
           ),
         ),
@@ -160,13 +180,11 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
         firstDate: DateTime.now(),
         lastDate: DateTime.now().add(const Duration(days: 365)));
 
-    if(chosenDate==null){
+    if (chosenDate == null) {
       return;
-    }else{
-      selectedDate=chosenDate;
+    } else {
+      selectedDate = chosenDate;
     }
-    setState(() {
-
-    });
+    setState(() {});
   }
 }
