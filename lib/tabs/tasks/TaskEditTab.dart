@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islami_app/Models/Task_Model.dart';
-import 'package:islami_app/Shared/firebase/FireBase_Functions.dart';
-import 'package:islami_app/Shared/styles/Colors.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../Models/Task_Model.dart';
+import '../../Shared/firebase/FireBase_Functions.dart';
+import '../../Shared/styles/Colors.dart';
 import '../../providers/my_provider.dart';
 
 class TaskEdit extends StatefulWidget {
@@ -39,142 +39,142 @@ class _TaskEditState extends State<TaskEdit> {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
           child: Card(
-            color: pro.themeMode==ThemeMode.light?Colors.white:darkGreyColor,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18.r)),
-            elevation: 20.sh,
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 18.0.h, horizontal: 12.w),
-              child: SingleChildScrollView(
-                child: Form(
-                  key: formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        "Edit Task",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.poppins(
-                            color: Theme.of(context).indicatorColor,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 18.sp),
-                      ),
-                      SizedBox(height: 20.h,),
-                      TextFormField(
-                        validator: (value) {
-                          if(value== null || value.isEmpty){
-                            return "Please enter Task Title";
-                          }
-                          return null;
-                        },
-                        style: GoogleFonts.inter(
-                            color: pro.themeMode==ThemeMode.light? Colors.black : Colors.white,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16.sp),
-                        controller: titleController,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.r),
-                            borderSide: const BorderSide(color: primary),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.r),
-                            borderSide: const BorderSide(color: Colors.red),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.r),
-                            borderSide: const BorderSide(color: primary),
-                          ),
-                          hintText: args.title,
-                          hintStyle: GoogleFonts.inter(
-                              color: const Color(0xffA9A9A9).withOpacity(.61),
-                              fontWeight: FontWeight.w400,
-                              fontSize: 20.sp),
-                        ),
-                      ),
-                      SizedBox(height: 20.h,),
-                      TextFormField(
-                        validator: (value) {
-                          if(value== null || value.isEmpty){
-                            return "Please enter Task Description";
-                          }
-                          return null;
-                        },
-                        style: GoogleFonts.inter(
-                            color: pro.themeMode==ThemeMode.light? Colors.black : Colors.white,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16.sp),
-                        controller: descriptionController,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.r),
-                            borderSide: const BorderSide(color: primary),
-                          ),
-                          errorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12).r,
-                            borderSide: const BorderSide(color: Colors.red),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.r),
-                            borderSide: const BorderSide(color: primary),
-                          ),
-                          hintText: args.description,
-                          hintStyle: GoogleFonts.inter(
-                              color: const Color(0xffA9A9A9).withOpacity(.61),
-                              fontWeight: FontWeight.w400,
-                              fontSize: 20.sp),
-                        ),
-                      ),
-                      SizedBox(height: 20.h,),
-                      Text(
-                        AppLocalizations.of(context)!.selectTime,
-                        style: GoogleFonts.inter(
-                            color: Theme.of(context).indicatorColor,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 20.sp),
-                      ),
-                      SizedBox(height: 20.h,),
-                      InkWell(
-                        onTap: () {
-                          selectDate();
-                        },
-                        child: Text(
-                          selectedDate.toString().substring(0,10),
+              color: pro.themeMode==ThemeMode.light?Colors.white:darkGreyColor,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18.r)),
+              elevation: 20.sh,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 18.0.h, horizontal: 12.w),
+                child: SingleChildScrollView(
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.editTask,
                           textAlign: TextAlign.center,
+                          style: GoogleFonts.poppins(
+                              color: Theme.of(context).indicatorColor,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 18.sp),
+                        ),
+                        SizedBox(height: 20.h,),
+                        TextFormField(
+                          validator: (value) {
+                            if(value== null || value.isEmpty){
+                              return "Please enter Task Title";
+                            }
+                            return null;
+                          },
                           style: GoogleFonts.inter(
-                              color: Theme.of(context).indicatorColor.withOpacity(.61),
+                              color: pro.themeMode==ThemeMode.light? Colors.black : Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16.sp),
+                          controller: titleController,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.r),
+                              borderSide: const BorderSide(color: primary),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.r),
+                              borderSide: const BorderSide(color: Colors.red),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.r),
+                              borderSide: const BorderSide(color: primary),
+                            ),
+                            hintText: args.title,
+                            hintStyle: GoogleFonts.inter(
+                                color: const Color(0xffA9A9A9).withOpacity(.61),
+                                fontWeight: FontWeight.w400,
+                                fontSize: 20.sp),
+                          ),
+                        ),
+                        SizedBox(height: 20.h,),
+                        TextFormField(
+                          validator: (value) {
+                            if(value== null || value.isEmpty){
+                              return "Please enter Task Description";
+                            }
+                            return null;
+                          },
+                          style: GoogleFonts.inter(
+                              color: pro.themeMode==ThemeMode.light? Colors.black : Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16.sp),
+                          controller: descriptionController,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.r),
+                              borderSide: const BorderSide(color: primary),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12).r,
+                              borderSide: const BorderSide(color: Colors.red),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.r),
+                              borderSide: const BorderSide(color: primary),
+                            ),
+                            hintText: args.description,
+                            hintStyle: GoogleFonts.inter(
+                                color: const Color(0xffA9A9A9).withOpacity(.61),
+                                fontWeight: FontWeight.w400,
+                                fontSize: 20.sp),
+                          ),
+                        ),
+                        SizedBox(height: 20.h,),
+                        Text(
+                          AppLocalizations.of(context)!.selectTime,
+                          style: GoogleFonts.inter(
+                              color: Theme.of(context).indicatorColor,
                               fontWeight: FontWeight.w400,
                               fontSize: 20.sp),
                         ),
-                      ),
-                      SizedBox(height: 70.h,),
-                      InkWell(
-                        onTap: () {
-                          if(formKey.currentState!.validate()){
-                            args.title=titleController.text;
-                            args.description=descriptionController.text;
-                            args.date=DateUtils.dateOnly(selectedDate).millisecondsSinceEpoch;
-                            FirebaseFunctions.editTask(args);
-                            Navigator.pop(context);
-                          }
-                        },
-                        child: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
-                          width: 240.w,
-                          height: 45.h,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25.r),
-                            color: primary
+                        SizedBox(height: 20.h,),
+                        InkWell(
+                          onTap: () {
+                            selectDate();
+                          },
+                          child: Text(
+                            selectedDate.toString().substring(0,10),
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.inter(
+                                color: Theme.of(context).indicatorColor.withOpacity(.61),
+                                fontWeight: FontWeight.w400,
+                                fontSize: 20.sp),
                           ),
-                          child: Text("Save Changes",style: GoogleFonts.inter(color: Colors.white,fontSize: 18.sp,fontWeight: FontWeight.w400),),
                         ),
-                      )
-                    ],
+                        SizedBox(height: 70.h,),
+                        InkWell(
+                          onTap: () {
+                            if(formKey.currentState!.validate()){
+                              args.title=titleController.text;
+                              args.description=descriptionController.text;
+                              args.date=DateUtils.dateOnly(selectedDate).millisecondsSinceEpoch;
+                              FirebaseFunctions.editTask(args);
+                              Navigator.pop(context);
+                            }
+                          },
+                          child: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
+                            width: 240.w,
+                            height: 45.h,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25.r),
+                                color: primary
+                            ),
+                            child: Text(AppLocalizations.of(context)!.saveChanges,style: GoogleFonts.inter(color: Colors.white,fontSize: 18.sp,fontWeight: FontWeight.w400),),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            )
+              )
           ),
         ),
       ),
@@ -187,7 +187,6 @@ class _TaskEditState extends State<TaskEdit> {
         initialDate: selectedDate,
         firstDate: DateTime.now(),
         lastDate: DateTime.now().add(const Duration(days: 365)));
-
     if(chosenDate==null){
       return;
     }else{
