@@ -108,8 +108,8 @@ class TaskItem extends StatelessWidget {
   //task.date<=DateTime.now().millisecondsSinceEpoch?Colors.red:Colors.blue;
   Color checkColor(){
     if(task.isDone){
-      return Color(0xff61E757);
-    }else if(task.date<=DateTime.now().millisecondsSinceEpoch){
+      return const Color(0xff61E757);
+    }else if(task.date<=DateTime.now().subtract(const Duration(days: 1)).millisecondsSinceEpoch){
       return Colors.red;
     }else{
       return Colors.blue;
