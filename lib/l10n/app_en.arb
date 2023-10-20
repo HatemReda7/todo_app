@@ -10,5 +10,10 @@
   "enterTaskTitle":"Enter Task Title",
   "addNewTask":"Add New Task",
   "addTask":"Add Task",
+  "edit": "Edit",
+  "delete": "Delete",
+  "done": "Done!",
+  "editTask": "Edit Task",
+  "saveChanges": "Save Changes",
   "arabic": "Arabic"
 }
