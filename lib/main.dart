@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,9 +20,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseFirestore.instance.disableNetwork();
   PrefsHelper.prefs = await SharedPreferences.getInstance();
   runApp(ChangeNotifierProvider(
-      create: (context) => MyProvider()..init(), child: const MyApp()));
+      create: (context) =>
+      MyProvider()
+        ..init(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -32,23 +36,24 @@ class MyApp extends StatelessWidget {
     var pro = Provider.of<MyProvider>(context);
     return ScreenUtilInit(
       designSize: const Size(360, 690),
-      builder: (context, child) => MaterialApp(
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        locale: Locale(pro.languageCode),
-        debugShowCheckedModeBanner: false,
-        initialRoute: SplashScreen.routeName,
-        routes: {
-          SplashScreen.routeName: (context) => const SplashScreen(),
-          HomeScreen.routeName: (context) => const HomeScreen(),
-          SettingsTab.routeName: (context) => const SettingsTab(),
-          ToDOListTab.routeName: (context) => const ToDOListTab(),
-          TaskEdit.routeName: (context) => const TaskEdit(),
-        },
-        theme: MyThemeData.lightTheme,
-        darkTheme: MyThemeData.darkTheme,
-        themeMode: pro.themeMode,
-      ),
+      builder: (context, child) =>
+          MaterialApp(
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            locale: Locale(pro.languageCode),
+            debugShowCheckedModeBanner: false,
+            initialRoute: SplashScreen.routeName,
+            routes: {
+              SplashScreen.routeName: (context) => const SplashScreen(),
+              HomeScreen.routeName: (context) => const HomeScreen(),
+              SettingsTab.routeName: (context) => const SettingsTab(),
+              ToDOListTab.routeName: (context) => const ToDOListTab(),
+              TaskEdit.routeName: (context) => const TaskEdit(),
+            },
+            theme: MyThemeData.lightTheme,
+            darkTheme: MyThemeData.darkTheme,
+            themeMode: pro.themeMode,
+          ),
     );
   }
 }
