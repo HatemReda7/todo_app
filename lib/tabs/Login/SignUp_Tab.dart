@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/Shared/firebase/FireBase_Functions.dart';
 
-class SignUpTab extends StatelessWidget {
+class SignUpTab extends StatefulWidget {
 
+  @override
+  State<SignUpTab> createState() => _SignUpTabState();
+}
+
+class _SignUpTabState extends State<SignUpTab> {
   var formKey=GlobalKey<FormState>();
+
   var nameController=TextEditingController();
+
   var ageController=TextEditingController();
+
   var emailController=TextEditingController();
+
   var passwordController=TextEditingController();
 
   @override
@@ -28,11 +38,18 @@ class SignUpTab extends StatelessWidget {
             },
           ),
             TextFormField(
+              keyboardType: TextInputType.emailAddress,
               controller: emailController,
               decoration: const InputDecoration(labelText: 'Email'),
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your email';
+                }
+                final bool emailValid =
+                RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[com]+")
+                    .hasMatch(value);
+                if(!emailValid){
+                  return "Please enter a valid email";
                 }
                 return null;
               },
@@ -44,6 +61,11 @@ class SignUpTab extends StatelessWidget {
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your password';
+                }
+                RegExp regex =
+                RegExp(r'^(?=.*?[a-z])(?=.*?[0-9]).{6,}$');
+                if (!regex.hasMatch(value)) {
+                  return 'Enter valid password';
                 }
                 return null;
               },
@@ -63,10 +85,10 @@ class SignUpTab extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  // TODO: Perform login
+                  FirebaseFunctions.createUser(emailController.text, passwordController.text);
                 }
               },
-              child: const Text('Login'),
+              child: const Text('Sign up'),
             ),
           ],
         ),

@@ -21,7 +21,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FirebaseFirestore.instance.disableNetwork();
   PrefsHelper.prefs = await SharedPreferences.getInstance();
   runApp(ChangeNotifierProvider(
       create: (context) =>

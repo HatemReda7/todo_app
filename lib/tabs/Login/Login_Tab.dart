@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/Screens/homescreen.dart';
+import 'package:islami_app/Shared/firebase/FireBase_Functions.dart';
 
-class LoginTab extends StatelessWidget {
+class LoginTab extends StatefulWidget {
+  @override
+  State<LoginTab> createState() => _LoginTabState();
+}
 
-  var formKey= GlobalKey<FormState>();
-  var emailController=TextEditingController();
-  var passwordController=TextEditingController();
+class _LoginTabState extends State<LoginTab> {
+  var formKey = GlobalKey<FormState>();
+
+  var emailController = TextEditingController();
+
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +30,10 @@ class LoginTab extends StatelessWidget {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your email';
                 }
-                final bool emailValid =
-                RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[com]+")
+                final bool emailValid = RegExp(
+                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[com]+")
                     .hasMatch(value);
-                if(!emailValid){
+                if (!emailValid) {
                   return "Please enter a valid email";
                 }
                 return null;
@@ -39,8 +47,7 @@ class LoginTab extends StatelessWidget {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your password';
                 }
-                RegExp regex =
-                RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                RegExp regex = RegExp(r'^(?=.*?[a-z])(?=.*?[0-9]).{6,}$');
                 if (!regex.hasMatch(value)) {
                   return 'Enter valid password';
                 }
@@ -51,7 +58,24 @@ class LoginTab extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  // TODO: Perform login
+                  FirebaseFunctions.login(
+                      emailController.text, passwordController.text, () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, HomeScreen.routeName, (route) => false);
+                  }, (errorMessage) {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text("Error!"),
+                        content: Text(errorMessage),
+                        actions: [
+                          ElevatedButton(onPressed: () {
+                            
+                          }, child: Text("Okay!"))
+                        ],
+                      ),
+                    );
+                  });
                 }
               },
               child: const Text('Login'),
