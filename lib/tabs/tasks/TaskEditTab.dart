@@ -135,11 +135,23 @@ class _TaskEditState extends State<TaskEdit> {
                         ),
                         SizedBox(height: 20.h,),
                         InkWell(
-                          onTap: () {
-                            selectDate();
+                          onTap: () async{
+                            DateTime? chosenDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.fromMillisecondsSinceEpoch(args.date),
+                                firstDate: DateTime.now(),
+                                lastDate: DateTime.now().add(const Duration(days: 365)));
+                            if(chosenDate==null){
+                              return;
+                            }else{
+                              args.date=chosenDate.millisecondsSinceEpoch;
+                            }
+                            setState(() {
+
+                            });
                           },
                           child: Text(
-                            selectedDate.toString().substring(0,10),
+                            DateTime.fromMillisecondsSinceEpoch(args.date).toString().substring(0,10),
                             textAlign: TextAlign.center,
                             style: GoogleFonts.inter(
                                 color: Theme.of(context).indicatorColor.withOpacity(.61),
@@ -153,7 +165,6 @@ class _TaskEditState extends State<TaskEdit> {
                             if(formKey.currentState!.validate()){
                               args.title=titleController.text;
                               args.description=descriptionController.text;
-                              args.date=DateUtils.dateOnly(selectedDate).millisecondsSinceEpoch;
                               FirebaseFunctions.editTask(args);
                               Navigator.pop(context);
                             }
