@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/Shared/firebase/FireBase_Functions.dart';
 import 'package:islami_app/tabs/Login/Login_Screen.dart';
-import 'package:islami_app/tabs/Login/Login_Tab.dart';
-
 class SignUpTab extends StatefulWidget {
+  const SignUpTab({super.key});
+
   @override
   State<SignUpTab> createState() => _SignUpTabState();
 }
@@ -47,7 +47,7 @@ class _SignUpTabState extends State<SignUpTab> {
                   return 'Please enter your email';
                 }
                 final bool emailValid = RegExp(
-                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[com]+")
+                        r"^[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[com]+")
                     .hasMatch(value);
                 if (!emailValid) {
                   return "Please enter a valid email";
@@ -90,12 +90,12 @@ class _SignUpTabState extends State<SignUpTab> {
                       context: context,
                       barrierDismissible: false,
                       builder: (context) => AlertDialog(
-                        title: Text("Error"),
+                        title: const Text("Error"),
                         content: Text(message),
                         actions: [
                           ElevatedButton(onPressed: () {
                             Navigator.pop(context);
-                          }, child: Text("Okay!"))
+                          }, child: const Text("Okay!"))
                         ],
                       ),
                     );
@@ -108,6 +108,5 @@ class _SignUpTabState extends State<SignUpTab> {
         ),
       ),
     );
-    ;
   }
 }

@@ -3,6 +3,8 @@ import 'package:islami_app/Screens/homescreen.dart';
 import 'package:islami_app/Shared/firebase/FireBase_Functions.dart';
 
 class LoginTab extends StatefulWidget {
+  const LoginTab({super.key});
+
   @override
   State<LoginTab> createState() => _LoginTabState();
 }
@@ -31,7 +33,7 @@ class _LoginTabState extends State<LoginTab> {
                   return 'Please enter your email';
                 }
                 final bool emailValid = RegExp(
-                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[com]+")
+                        r"^[a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[com]+")
                     .hasMatch(value);
                 if (!emailValid) {
                   return "Please enter a valid email";
@@ -64,12 +66,12 @@ class _LoginTabState extends State<LoginTab> {
                       context: context,
                       barrierDismissible: false,
                       builder: (context) => AlertDialog(
-                        title: Text("Error!"),
+                        title: const Text("Error!"),
                         content: Text(errorMessage),
                         actions: [
                           ElevatedButton(onPressed: () {
                             Navigator.pop(context);
-                          }, child: Text("Okay!"))
+                          }, child: const Text("Okay!"))
                         ],
                       ),
                     );

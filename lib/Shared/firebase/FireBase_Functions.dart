@@ -95,7 +95,8 @@ class FirebaseFunctions {
         onSuccess(user);
       }
     } on FirebaseAuthException catch (e) {
-      onError("Wrong Email or Password!");
+      //onError("Wrong Email or Password!");
+      onError(e.message);
       // // if (e.code == 'user-not-found') {
       // //   onError(e.message);
       // //   print('No user found for that email.');
