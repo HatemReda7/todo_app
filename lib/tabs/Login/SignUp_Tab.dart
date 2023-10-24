@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/Shared/firebase/FireBase_Functions.dart';
+import 'package:islami_app/tabs/Login/Login_Screen.dart';
+import 'package:islami_app/tabs/Login/Login_Tab.dart';
 
 class SignUpTab extends StatefulWidget {
-
   @override
   State<SignUpTab> createState() => _SignUpTabState();
 }
 
 class _SignUpTabState extends State<SignUpTab> {
-  var formKey=GlobalKey<FormState>();
+  var formKey = GlobalKey<FormState>();
 
-  var nameController=TextEditingController();
+  var nameController = TextEditingController();
 
-  var ageController=TextEditingController();
+  var ageController = TextEditingController();
 
-  var emailController=TextEditingController();
+  var emailController = TextEditingController();
 
-  var passwordController=TextEditingController();
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +29,15 @@ class _SignUpTabState extends State<SignUpTab> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TextFormField(
-            controller: nameController,
-            decoration: const InputDecoration(labelText: 'Name'),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your Name';
-              }
-              return null;
-            },
-          ),
+              controller: nameController,
+              decoration: const InputDecoration(labelText: 'Name'),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your Name';
+                }
+                return null;
+              },
+            ),
             TextFormField(
               keyboardType: TextInputType.emailAddress,
               controller: emailController,
@@ -45,10 +46,10 @@ class _SignUpTabState extends State<SignUpTab> {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your email';
                 }
-                final bool emailValid =
-                RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[com]+")
+                final bool emailValid = RegExp(
+                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[com]+")
                     .hasMatch(value);
-                if(!emailValid){
+                if (!emailValid) {
                   return "Please enter a valid email";
                 }
                 return null;
@@ -61,11 +62,6 @@ class _SignUpTabState extends State<SignUpTab> {
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your password';
-                }
-                RegExp regex =
-                RegExp(r'^(?=.*?[a-z])(?=.*?[0-9]).{6,}$');
-                if (!regex.hasMatch(value)) {
-                  return 'Enter valid password';
                 }
                 return null;
               },
@@ -85,7 +81,25 @@ class _SignUpTabState extends State<SignUpTab> {
             ElevatedButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  FirebaseFunctions.createUser(emailController.text, passwordController.text);
+                  FirebaseFunctions.createUser(
+                      emailController.text, passwordController.text,nameController.text,int.parse(ageController.text), () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, LoginScreen.routeName, (route) => false);
+                  }, (message) {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (context) => AlertDialog(
+                        title: Text("Error"),
+                        content: Text(message),
+                        actions: [
+                          ElevatedButton(onPressed: () {
+                            Navigator.pop(context);
+                          }, child: Text("Okay!"))
+                        ],
+                      ),
+                    );
+                  });
                 }
               },
               child: const Text('Sign up'),
@@ -93,6 +107,7 @@ class _SignUpTabState extends State<SignUpTab> {
           ],
         ),
       ),
-    );;
+    );
+    ;
   }
 }

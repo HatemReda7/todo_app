@@ -47,10 +47,6 @@ class _LoginTabState extends State<LoginTab> {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your password';
                 }
-                RegExp regex = RegExp(r'^(?=.*?[a-z])(?=.*?[0-9]).{6,}$');
-                if (!regex.hasMatch(value)) {
-                  return 'Enter valid password';
-                }
                 return null;
               },
             ),
@@ -59,18 +55,20 @@ class _LoginTabState extends State<LoginTab> {
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   FirebaseFunctions.login(
-                      emailController.text, passwordController.text, () {
+                      emailController.text, passwordController.text, (user) {
                     Navigator.pushNamedAndRemoveUntil(
-                        context, HomeScreen.routeName, (route) => false);
+                        context, HomeScreen.routeName, (route) => false,
+                    arguments: user);
                   }, (errorMessage) {
                     showDialog(
                       context: context,
+                      barrierDismissible: false,
                       builder: (context) => AlertDialog(
                         title: Text("Error!"),
                         content: Text(errorMessage),
                         actions: [
                           ElevatedButton(onPressed: () {
-                            
+                            Navigator.pop(context);
                           }, child: Text("Okay!"))
                         ],
                       ),
