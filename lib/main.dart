@@ -1,8 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_app/tabs/Login/Login_Screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Screens/SplashScreen.dart';
@@ -20,7 +20,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FirebaseFirestore.instance.disableNetwork();
   PrefsHelper.prefs = await SharedPreferences.getInstance();
   runApp(ChangeNotifierProvider(
       create: (context) =>
@@ -42,9 +41,10 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             locale: Locale(pro.languageCode),
             debugShowCheckedModeBanner: false,
-            initialRoute: SplashScreen.routeName,
+            initialRoute: pro.firebaseUser == null ?HomeScreen.routeName: LoginScreen.routeName,
             routes: {
               SplashScreen.routeName: (context) => const SplashScreen(),
+              LoginScreen.routeName: (context) => const LoginScreen(),
               HomeScreen.routeName: (context) => const HomeScreen(),
               SettingsTab.routeName: (context) => const SettingsTab(),
               ToDOListTab.routeName: (context) => const ToDOListTab(),
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
             },
             theme: MyThemeData.lightTheme,
             darkTheme: MyThemeData.darkTheme,
-            themeMode: pro.themeMode,
+            themeMode: ThemeMode.light,
           ),
     );
   }
