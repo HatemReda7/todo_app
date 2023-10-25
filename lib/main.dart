@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             locale: Locale(pro.languageCode),
             debugShowCheckedModeBanner: false,
-            initialRoute: pro.firebaseUser == null ?HomeScreen.routeName: LoginScreen.routeName,
+            initialRoute: pro.firebaseUser != null ?HomeScreen.routeName: LoginScreen.routeName,
             routes: {
               SplashScreen.routeName: (context) => const SplashScreen(),
               LoginScreen.routeName: (context) => const LoginScreen(),
