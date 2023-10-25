@@ -57,10 +57,9 @@ class _LoginTabState extends State<LoginTab> {
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   FirebaseFunctions.login(
-                      emailController.text, passwordController.text, (user) {
+                      emailController.text, passwordController.text, () {
                     Navigator.pushNamedAndRemoveUntil(
-                        context, HomeScreen.routeName, (route) => false,
-                    arguments: user);
+                        context, HomeScreen.routeName, (route) => false,);
                   }, (errorMessage) {
                     showDialog(
                       context: context,

@@ -91,8 +91,8 @@ class FirebaseFunctions {
       final credential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       if(credential.user?.uid !=null){
-        var user= await readUserFromFirestore(credential.user!.uid);
-        onSuccess(user);
+        // var user= await readUserFromFirestore(credential.user!.uid);
+        onSuccess();
       }
     } on FirebaseAuthException catch (e) {
       //onError("Wrong Email or Password!");
