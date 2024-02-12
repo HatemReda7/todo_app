@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "142837731715",
-    "project_id": "todo-app-fde18",
-    "storage_bucket": "todo-app-fde18.appspot.com"
+    "project_number": "560672177585",
+    "project_id": "codealpha-flashcard-quiz-app",
+    "storage_bucket": "codealpha-flashcard-quiz-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:142837731715:android:5185a95d15989da247e6b6",
+        "mobilesdk_app_id": "1:560672177585:android:ad2d4223b7daac77b91190",
         "android_client_info": {
           "package_name": "com.example.todo_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCtzLzEA1JZjqvLzJWBRnQ5HY0QWq_fpiA"
+          "current_key": "AIzaSyCwdR4ldvptJn8zst-zh4As73CmWzwiOJQ"
         }
       ],
       "services": {
