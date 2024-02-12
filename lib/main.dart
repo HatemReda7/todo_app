@@ -3,9 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_app/tabs/tasks/quiz_tab.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Screens/SplashScreen.dart';
 import 'Screens/homescreen.dart';
 import 'Shared/styles/myThemeData.dart';
 import 'firebase_options.dart';
@@ -42,11 +42,12 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             locale: Locale(pro.languageCode),
             debugShowCheckedModeBanner: false,
-            initialRoute: SplashScreen.routeName,
+            initialRoute: HomeScreen.routeName,
             routes: {
-              SplashScreen.routeName: (context) => const SplashScreen(),
+              // SplashScreen.routeName: (context) => const SplashScreen(),
               HomeScreen.routeName: (context) => const HomeScreen(),
               SettingsTab.routeName: (context) => const SettingsTab(),
+              QuizTab.routeName: (context) =>  QuizTab(),
               ToDOListTab.routeName: (context) => const ToDOListTab(),
               TaskEdit.routeName: (context) => const TaskEdit(),
             },
