@@ -8,16 +8,16 @@ import '../../Shared/firebase/FireBase_Functions.dart';
 import '../../Shared/styles/colors.dart';
 import '../../providers/my_provider.dart';
 
-class TaskEdit extends StatefulWidget {
+class QuestionEdit extends StatefulWidget {
   static const String routeName="Question edit";
 
-  const TaskEdit({super.key});
+  const QuestionEdit({super.key});
 
   @override
-  State<TaskEdit> createState() => _TaskEditState();
+  State<QuestionEdit> createState() => _QuestionEditState();
 }
 
-class _TaskEditState extends State<TaskEdit> {
+class _QuestionEditState extends State<QuestionEdit> {
   var questionController = TextEditingController();
   var answerController = TextEditingController();
 

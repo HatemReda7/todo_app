@@ -32,17 +32,17 @@ class QuestionItem extends StatelessWidget {
               icon: Icons.delete,
               label: AppLocalizations.of(context)!.delete,
             ),
-            SlidableAction(
-              borderRadius: pro.languageCode=="ar"?BorderRadius.only(topLeft: Radius.circular(15.r), bottomLeft: Radius.circular(15.r))
-                  :BorderRadius.only(topRight: Radius.circular(15.r), bottomRight: Radius.circular(15.r)),
-              onPressed: (context) {
-                Navigator.pushNamed(context, TaskEdit.routeName,
-                    arguments: QuestionModel(question: question.question, answer: question.answer));
-              },
-              backgroundColor: Colors.blue,
-              icon: Icons.edit,
-              label: AppLocalizations.of(context)!.edit,
-            ),
+            // SlidableAction(
+            //   borderRadius: pro.languageCode=="ar"?BorderRadius.only(topLeft: Radius.circular(15.r), bottomLeft: Radius.circular(15.r))
+            //       :BorderRadius.only(topRight: Radius.circular(15.r), bottomRight: Radius.circular(15.r)),
+            //   onPressed: (context) {
+            //     Navigator.pushNamed(context, QuestionEdit.routeName,
+            //         arguments: QuestionModel(question: question.question, answer: question.answer));
+            //   },
+            //   backgroundColor: Colors.blue,
+            //   icon: Icons.edit,
+            //   label: AppLocalizations.of(context)!.edit,
+            // ),
           ]),
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 18.w),

@@ -13,7 +13,6 @@ import 'firebase_options.dart';
 import 'preference_helper.dart';
 import 'providers/my_provider.dart';
 import 'tabs/settings/settings_tab.dart';
-import 'tabs/tasks/question_edit.dart';
 import 'tabs/tasks/flashcard_quiz_tab.dart';
 
 void main() async {
@@ -50,7 +49,7 @@ class MyApp extends StatelessWidget {
               QuizTab.routeName: (context) =>  const QuizTab(),
               QuizResult.routeName: (context) =>  const QuizResult(),
               ToDOListTab.routeName: (context) => const ToDOListTab(),
-              TaskEdit.routeName: (context) => const TaskEdit(),
+              // QuestionEdit.routeName: (context) => const QuestionEdit(),
             },
             theme: MyThemeData.lightTheme,
             darkTheme: MyThemeData.darkTheme,
