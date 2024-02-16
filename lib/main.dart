@@ -24,8 +24,7 @@ void main() async {
   PrefsHelper.prefs = await SharedPreferences.getInstance();
   runApp(ChangeNotifierProvider(
       create: (context) =>
-      MyProvider()
-        ..init(), child: const MyApp()));
+      MyProvider()..init(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
