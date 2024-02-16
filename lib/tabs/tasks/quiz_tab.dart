@@ -3,9 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Models/question_model.dart';
 import 'package:islami_app/tabs/tasks/quiz_item.dart';
-import 'package:provider/provider.dart';
-import '../../Shared/firebase/FireBase_Functions.dart';
-import '../../providers/my_provider.dart';
+import '../../Shared/firebase/firebase_functions.dart';
 import 'quiz_result.dart';
 
 class QuizTab extends StatefulWidget {

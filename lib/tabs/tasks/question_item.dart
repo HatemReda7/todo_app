@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Models/question_model.dart';
-import '../../Shared/firebase/FireBase_Functions.dart';
-import '../../providers/my_provider.dart';
-import 'question_edit.dart';
+import '../../Shared/firebase/firebase_functions.dart';
 
 class QuestionItem extends StatelessWidget {
   final QuestionModel question;
@@ -15,7 +12,6 @@ class QuestionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var pro= Provider.of<MyProvider>(context);
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 18.0.w, vertical: 8.h),
       child: Card(

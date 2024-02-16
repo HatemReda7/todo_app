@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Models/question_model.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../Shared/firebase/FireBase_Functions.dart';
+import '../../Shared/firebase/firebase_functions.dart';
 import '../../Shared/styles/colors.dart';
-import '../../providers/my_provider.dart';
 
 class QuestionEdit extends StatefulWidget {
   static const String routeName="Question edit";
@@ -25,7 +23,6 @@ class _QuestionEditState extends State<QuestionEdit> {
 
   @override
   Widget build(BuildContext context) {
-    var pro = Provider.of<MyProvider>(context);
     var args = ModalRoute.of(context)?.settings.arguments as QuestionModel;
     return Scaffold(
       appBar: AppBar(

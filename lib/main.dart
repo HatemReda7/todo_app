@@ -32,14 +32,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var pro = Provider.of<MyProvider>(context);
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       builder: (context, child) =>
           MaterialApp(
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
-            locale: Locale("en"),
+            locale: const Locale("en"),
             debugShowCheckedModeBanner: false,
             initialRoute: HomeScreen.routeName,
             routes: {

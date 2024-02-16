@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Models/question_model.dart';
-import 'package:provider/provider.dart';
-import '../../Shared/firebase/FireBase_Functions.dart';
+import '../../Shared/firebase/firebase_functions.dart';
 import '../../Shared/styles/colors.dart';
-import '../../providers/my_provider.dart';
 
 class AddTaskBottomSheet extends StatefulWidget {
   const AddTaskBottomSheet({super.key});
@@ -21,7 +19,6 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    var pro = Provider.of<MyProvider>(context);
     return Container(
       color: Theme.of(context).cardColor,
       child: Padding(
