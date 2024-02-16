@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/tabs/tasks/quiz_tab.dart';
-import '../../Models/quiz_model.dart';
+import '../../Models/question_model.dart';
 import '../../Shared/firebase/FireBase_Functions.dart';
 import '../../Shared/styles/colors.dart';
 import 'question_item.dart';

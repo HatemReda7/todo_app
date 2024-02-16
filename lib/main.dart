@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
           MaterialApp(
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
-            locale: Locale(pro.languageCode),
+            locale: Locale("en"),
             debugShowCheckedModeBanner: false,
             initialRoute: HomeScreen.routeName,
             routes: {

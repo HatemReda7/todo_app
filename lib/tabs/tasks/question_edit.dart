@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islami_app/Models/quiz_model.dart';
+import 'package:islami_app/Models/question_model.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Shared/firebase/FireBase_Functions.dart';
@@ -29,7 +29,7 @@ class _QuestionEditState extends State<QuestionEdit> {
     var args = ModalRoute.of(context)?.settings.arguments as QuestionModel;
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(size: 30.sp,color: pro.themeMode==ThemeMode.light?Colors.white:Colors.black),
+        iconTheme: IconThemeData(size: 30.sp,color: Colors.black),
         toolbarHeight: 100.h,
         title: Text("FlashCard Quiz",style: GoogleFonts.poppins(color: Theme.of(context).shadowColor,fontSize: 22.sp,fontWeight: FontWeight.w700,),),
       ),
@@ -38,7 +38,7 @@ class _QuestionEditState extends State<QuestionEdit> {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
           child: Card(
-              color: pro.themeMode==ThemeMode.light?Colors.white:darkGreyColor,
+              color: darkGreyColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.r)),
               elevation: 20.sh,
@@ -67,7 +67,7 @@ class _QuestionEditState extends State<QuestionEdit> {
                             return null;
                           },
                           style: GoogleFonts.inter(
-                              color: pro.themeMode==ThemeMode.light? Colors.black : Colors.white,
+                              color: Colors.white,
                               fontWeight: FontWeight.w400,
                               fontSize: 16.sp),
                           controller: questionController,
@@ -100,7 +100,7 @@ class _QuestionEditState extends State<QuestionEdit> {
                             return null;
                           },
                           style: GoogleFonts.inter(
-                              color: pro.themeMode==ThemeMode.light? Colors.black : Colors.white,
+                              color: Colors.white,
                               fontWeight: FontWeight.w400,
                               fontSize: 16.sp),
                           controller: answerController,

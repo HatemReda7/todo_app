@@ -1,52 +1,20 @@
-// class QuizModel {
-//   List<QuestionModel> questions;
-//
-//   QuizModel(this.questions);
-//
-//   QuizModel.fromJson(Map<String, dynamic> json) : this(
-//     questions: json["questions"],
-//   );
-//
-//   Map<String, dynamic> toJson() {
-//     return {
-//       "questions": questions,
-//     };
-//   }
-// }
-
-
-class QuestionModel {
+class QuizModel{
   String id;
-  String question;
-  String answer;
-  bool isDone;
+  int correctAnswersCounter;
 
-  QuestionModel(
+  QuizModel(
       {this.id = "",
-      required this.question,
-      required this.answer,
-      this.isDone = false});
+        required this.correctAnswersCounter,});
 
-  QuestionModel.fromJson(Map<String, dynamic> json) : this(
+  QuizModel.fromJson(Map<String, dynamic> json) : this(
     id: json["id"],
-    question: json["question"],
-    answer: json["answer"],
-    isDone: json["isDone"],
+    correctAnswersCounter: json["correctAnswersCounter"],
   );
 
   Map<String,dynamic> toJson(){
     return {
-    "id": id,
-    "question": question,
-    "answer": answer,
-    "isDone": isDone,
+      "id": id,
+      "correctAnswersCounter": correctAnswersCounter,
     };
   }
-  /*QuestionModel fromJson(Map<String, dynamic> json) {
-    return QuestionModel(
-        question: json["question"],
-        answer: json["answer"],
-        isDone: json["isDone"],
-        id: json["id"]);
-  }*/
 }

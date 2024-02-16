@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islami_app/Models/quiz_model.dart';
+import 'package:islami_app/Models/question_model.dart';
+import 'package:islami_app/Shared/firebase/FireBase_Functions.dart';
 import 'package:provider/provider.dart';
 import '../../Shared/styles/colors.dart';
 import '../../providers/my_provider.dart';
@@ -44,27 +45,23 @@ class _QuizItemState extends State<QuizItem> {
           ),
           SizedBox(height: 15.h,),
           TextFormField(
+            textInputAction: TextInputAction.done,
             onFieldSubmitted: (value) {
               if(value == widget.question.answer){
                 correctAnswer=true;
                 correctAnswerCounter+=1;
+                pro.quizScore+=1;
               }
               else if(value != widget.question.answer){
                 wrongAnswer=true;
                 wrongAnswerCounter+=1;
               }
+              setState(() {
+
+              });
             },
-            // validator: (value) {
-            //   if (value == widget.question.answer) {
-            //     correctAnswerCounter+=1;
-            //     return "Please answer this Question";
-            //   }
-            //   return null;
-            // },
             style: GoogleFonts.inter(
-                color: pro.themeMode == ThemeMode.light
-                    ? Colors.black
-                    : Colors.white,
+                color: Colors.white,
                 fontWeight: FontWeight.w400,
                 fontSize: 16.sp),
             controller: answerController,

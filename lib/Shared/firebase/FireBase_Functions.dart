@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:islami_app/Models/quiz_model.dart';
+import 'package:islami_app/Models/question_model.dart';
+
+import '../../Models/quiz_model.dart';
 
 class FirebaseFunctions {
 
@@ -11,6 +13,20 @@ class FirebaseFunctions {
       toFirestore: (value, _) {
         return value.toJson();
       },);
+  }
+
+  static CollectionReference<QuizModel> getQuizCollection(){
+    return FirebaseFirestore.instance.collection("Quizes").withConverter<QuizModel>(
+      fromFirestore: (snapshot, _) {
+        return QuizModel.fromJson(snapshot.data()!);
+      },
+      toFirestore: (value, _) {
+        return value.toJson();
+      },);
+  }
+
+  static void addScore(QuizModel quiz){
+    getQuizCollection().doc(quiz.id).update(quiz.toJson());
   }
 
   static void addQuestion(QuestionModel questionModel) {
@@ -25,8 +41,8 @@ class FirebaseFunctions {
     getQuestionCollection().doc(id).delete();
   }
   
-  static void editQuestion(QuestionModel task){
-    getQuestionCollection().doc(task.id).update(task.toJson());
+  static void editQuestion(QuestionModel question){
+    getQuestionCollection().doc(question.id).update(question.toJson());
   }
 
   static Stream<QuerySnapshot<QuestionModel>> getQuestion(){

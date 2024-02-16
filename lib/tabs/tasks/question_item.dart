@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../Models/quiz_model.dart';
+import '../../Models/question_model.dart';
 import '../../Shared/firebase/FireBase_Functions.dart';
 import '../../providers/my_provider.dart';
 import 'question_edit.dart';
@@ -23,8 +23,7 @@ class QuestionItem extends StatelessWidget {
         child: Slidable(
           startActionPane: ActionPane(motion: const ScrollMotion(), children: [
             SlidableAction(
-              borderRadius: pro.languageCode=="en"?BorderRadius.only(topLeft: Radius.circular(15.r), bottomLeft: Radius.circular(15.r))
-                  :BorderRadius.only(topRight: Radius.circular(15.r), bottomRight: Radius.circular(15.r)),
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(15.r), bottomLeft: Radius.circular(15.r)),
               onPressed: (context) {
                 FirebaseFunctions.deleteQuestion(question.id);
               },
