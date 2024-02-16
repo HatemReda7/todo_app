@@ -37,6 +37,7 @@ class QuizResult extends StatelessWidget {
                 style: const ButtonStyle(
                     fixedSize: MaterialStatePropertyAll(Size(150, 40))),
                 onPressed: () {
+                  pro.quizScore=0;
                   Navigator.pop(context);
                 },
                 child: Text(

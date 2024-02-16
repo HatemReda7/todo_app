@@ -48,12 +48,12 @@ class _QuizItemState extends State<QuizItem> {
             onFieldSubmitted: (value) {
               if(value == widget.question.answer){
                 correctAnswer=true;
-                correctAnswerCounter+=1;
+                wrongAnswer=false;
                 pro.quizScore+=1;
               }
               else if(value != widget.question.answer){
                 wrongAnswer=true;
-                wrongAnswerCounter+=1;
+                correctAnswer=false;
               }
               setState(() {
 
