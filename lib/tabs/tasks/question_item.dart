@@ -9,9 +9,9 @@ import '../../Shared/firebase/FireBase_Functions.dart';
 import '../../providers/my_provider.dart';
 import 'question_edit.dart';
 
-class TaskItem extends StatelessWidget {
+class QuestionItem extends StatelessWidget {
   final QuestionModel question;
-  const TaskItem({required this.question, super.key});
+  const QuestionItem({required this.question, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,6 @@ class TaskItem extends StatelessWidget {
                 Container(
                   height: 62.h,
                   width: 4.w,
-                  //question.isDone==false?primary:const Color(0xff61E757)
                   decoration: BoxDecoration( color: Colors.blue,
                     borderRadius: BorderRadius.circular(18.r),
                   ),
@@ -76,29 +75,6 @@ class TaskItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Spacer(),
-                question.isDone?InkWell(
-                    onTap: () {
-                      question.isDone=false;
-                      FirebaseFunctions.editQuestion(question);
-                    },
-                    child: Text(AppLocalizations.of(context)!.done,style: TextStyle(color: const Color(0xff61E757),fontSize: 22.sp,fontWeight: FontWeight.w700),))
-                    :InkWell(
-                  onTap: () {
-                    question.isDone=true;
-                    FirebaseFunctions.editQuestion(question);
-                  },
-                  child: Container(
-                      width: 69.w,
-                      height: 34.h,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.r),
-                          // color: checkColor()
-                        color: Colors.blue
-                      ),
-                      child: Icon(Icons.check,size: 35.sp,color: Colors.white,fill: 0.5,)),
-                )
               ],
             ),
           ),

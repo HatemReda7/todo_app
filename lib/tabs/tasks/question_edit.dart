@@ -9,7 +9,7 @@ import '../../Shared/styles/colors.dart';
 import '../../providers/my_provider.dart';
 
 class TaskEdit extends StatefulWidget {
-  static const String routeName="task edit";
+  static const String routeName="Question edit";
 
   const TaskEdit({super.key});
 
@@ -21,7 +21,6 @@ class _TaskEditState extends State<TaskEdit> {
   var questionController = TextEditingController();
   var answerController = TextEditingController();
 
-  var selectedDate = DateTime.now();
   var formKey=GlobalKey<FormState>();
 
   @override
@@ -32,7 +31,7 @@ class _TaskEditState extends State<TaskEdit> {
       appBar: AppBar(
         iconTheme: IconThemeData(size: 30.sp,color: pro.themeMode==ThemeMode.light?Colors.white:Colors.black),
         toolbarHeight: 100.h,
-        title: Text("To Do",style: GoogleFonts.poppins(color: Theme.of(context).shadowColor,fontSize: 22.sp,fontWeight: FontWeight.w700,),),
+        title: Text("FlashCard Quiz",style: GoogleFonts.poppins(color: Theme.of(context).shadowColor,fontSize: 22.sp,fontWeight: FontWeight.w700,),),
       ),
       body: SizedBox(
         height: 688.h,
@@ -52,7 +51,7 @@ class _TaskEditState extends State<TaskEdit> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(
-                          AppLocalizations.of(context)!.editTask,
+                          "Edit Question",
                           textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
                               color: Theme.of(context).indicatorColor,

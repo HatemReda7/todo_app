@@ -37,7 +37,6 @@ class _ToDOListTabState extends State<ToDOListTab> {
                 fontSize: 22.sp,
                 fontWeight: FontWeight.w700,),),
               ElevatedButton(onPressed: () {
-              // showSheet();
                 Navigator.pushNamed(context, QuizTab.routeName);
               }, child:  const Text("Take Quiz!"))
             ],
@@ -52,26 +51,16 @@ class _ToDOListTabState extends State<ToDOListTab> {
               return const Center(child: Text("Something went wrong",
                 style: TextStyle(color: Colors.white),));
             }
-            List<QuestionModel> tasks = snapshot.data?.docs.map((e) => e.data())
+            List<QuestionModel> questions = snapshot.data?.docs.map((e) => e.data())
                 .toList() ?? [];
             return Expanded(
               child: ListView.builder(itemBuilder: (context, index) {
-                return TaskItem(question: tasks[index],);
-              }, itemCount: tasks.length,),
+                return QuestionItem(question: questions[index],);
+              }, itemCount: questions.length,),
             );
           },
         )
       ],
     );
-  }
-  void showSheet(){
-    showModalBottomSheet(
-      isScrollControlled: true,
-      context: context, builder: (context) {
-      return Padding(
-        padding:  EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom,),
-        child: const QuizTab(),
-      );
-    },);
   }
 }
