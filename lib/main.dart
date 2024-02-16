@@ -51,9 +51,8 @@ class MyApp extends StatelessWidget {
               ToDOListTab.routeName: (context) => const ToDOListTab(),
               // QuestionEdit.routeName: (context) => const QuestionEdit(),
             },
-            theme: MyThemeData.lightTheme,
             darkTheme: MyThemeData.darkTheme,
-            themeMode: pro.themeMode,
+            themeMode: ThemeMode.dark,
           ),
     );
   }

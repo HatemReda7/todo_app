@@ -25,8 +25,8 @@ class _ToDOListTabState extends State<ToDOListTab> {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.symmetric(vertical: 35.h, horizontal: 25.w),
-          height: 160.h,
+          padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 25.w),
+          height: 100.h,
           width: double.infinity,
           color: primary,
           child: Column(
@@ -36,9 +36,15 @@ class _ToDOListTabState extends State<ToDOListTab> {
                   .shadowColor,
                 fontSize: 22.sp,
                 fontWeight: FontWeight.w700,),),
+              SizedBox(height: 5.h,),
               ElevatedButton(onPressed: () {
                 Navigator.pushNamed(context, QuizTab.routeName);
-              }, child:  const Text("Take Quiz!"))
+              },
+                  style: const ButtonStyle(fixedSize: MaterialStatePropertyAll(Size(200, 40))),
+                  child: Text("Take Quiz!",style: GoogleFonts.poppins(
+                  color: Theme.of(context).indicatorColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16.sp),))
             ],
           ),
         ),

@@ -20,35 +20,37 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBody: true,
-      body: tabs[index],
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        showSheet();
-      },
-        shape: CircleBorder(
-          side: BorderSide(color: Theme.of(context).cardColor,width: 3.w)
+    return SafeArea(
+      child: Scaffold(
+        extendBody: true,
+        body: tabs[index],
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingActionButton(onPressed: () {
+          showSheet();
+        },
+          shape: CircleBorder(
+            side: BorderSide(color: Theme.of(context).cardColor,width: 3.w)
+          ),
+        child: Icon(Icons.add,size: 30.sp,),
         ),
-      child: Icon(Icons.add,size: 30.sp,),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        notchMargin: 8.r,
-        height: 80.h,
-        shape: const CircularNotchedRectangle(),
-        child: BottomNavigationBar(
-          backgroundColor: Colors.transparent,
-            onTap: (value) {
-              index=value;
-              setState(() {
+        bottomNavigationBar: BottomAppBar(
+          notchMargin: 8.r,
+          height: 80.h,
+          shape: const CircularNotchedRectangle(),
+          child: BottomNavigationBar(
+            backgroundColor: Colors.transparent,
+              onTap: (value) {
+                index=value;
+                setState(() {
 
-              });
-            },
-            currentIndex: index,
-            items: const [
-           BottomNavigationBarItem(icon: Icon(Icons.list), label: ""),
-           BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
-        ]),
+                });
+              },
+              currentIndex: index,
+              items: const [
+             BottomNavigationBarItem(icon: Icon(Icons.list), label: ""),
+             BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
+          ]),
+        ),
       ),
     );
   }
