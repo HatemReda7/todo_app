@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islami_app/tabs/settings/Settings_Tab.dart';
+import 'package:islami_app/tabs/settings/settings_tab.dart';
 import 'package:islami_app/tabs/tasks/Add_Task_BottomSheet.dart';
-import 'package:islami_app/tabs/tasks/To_Do_List_Tab.dart';
+import 'package:islami_app/tabs/tasks/flashcard_quiz_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "Home Screen";

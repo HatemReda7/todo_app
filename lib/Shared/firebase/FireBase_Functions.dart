@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:islami_app/Models/quiz_Model.dart';
+import 'package:islami_app/Models/quiz_model.dart';
 
 class FirebaseFunctions {
 

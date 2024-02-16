@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islami_app/Models/quiz_Model.dart';
+import 'package:islami_app/Models/quiz_model.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Shared/firebase/FireBase_Functions.dart';
-import '../../Shared/styles/Colors.dart';
+import '../../Shared/styles/colors.dart';
 import '../../providers/my_provider.dart';
 
 class TaskEdit extends StatefulWidget {

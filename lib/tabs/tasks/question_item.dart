@@ -4,10 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../Models/quiz_Model.dart';
+import '../../Models/quiz_model.dart';
 import '../../Shared/firebase/FireBase_Functions.dart';
 import '../../providers/my_provider.dart';
-import 'TaskEditTab.dart';
+import 'question_edit.dart';
 
 class TaskItem extends StatelessWidget {
   final QuestionModel question;

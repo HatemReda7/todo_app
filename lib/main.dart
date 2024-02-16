@@ -3,17 +3,18 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami_app/tabs/tasks/quiz_result.dart';
 import 'package:islami_app/tabs/tasks/quiz_tab.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Screens/homescreen.dart';
-import 'Shared/styles/myThemeData.dart';
+import 'Shared/styles/my_theme_data.dart';
 import 'firebase_options.dart';
 import 'preference_helper.dart';
 import 'providers/my_provider.dart';
-import 'tabs/settings/Settings_Tab.dart';
-import 'tabs/tasks/TaskEditTab.dart';
-import 'tabs/tasks/To_Do_List_Tab.dart';
+import 'tabs/settings/settings_tab.dart';
+import 'tabs/tasks/question_edit.dart';
+import 'tabs/tasks/flashcard_quiz_tab.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,10 +45,10 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             initialRoute: HomeScreen.routeName,
             routes: {
-              // SplashScreen.routeName: (context) => const SplashScreen(),
               HomeScreen.routeName: (context) => const HomeScreen(),
               SettingsTab.routeName: (context) => const SettingsTab(),
-              QuizTab.routeName: (context) =>  QuizTab(),
+              QuizTab.routeName: (context) =>  const QuizTab(),
+              QuizResult.routeName: (context) =>  const QuizResult(),
               ToDOListTab.routeName: (context) => const ToDOListTab(),
               TaskEdit.routeName: (context) => const TaskEdit(),
             },

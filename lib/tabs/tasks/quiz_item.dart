@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islami_app/Models/quiz_Model.dart';
+import 'package:islami_app/Models/quiz_model.dart';
 import 'package:provider/provider.dart';
-import '../../Shared/styles/Colors.dart';
+import '../../Shared/styles/colors.dart';
 import '../../providers/my_provider.dart';
 
-class QuizItem extends StatelessWidget {
-  QuestionModel question;
-  int index;
-  bool isCorrect;
-  QuizItem({required this.question,required this.index,this.isCorrect=false});
+class QuizItem extends StatefulWidget {
+  final QuestionModel question;
+  final int index;
+  final bool isCorrect;
+  const QuizItem({super.key, required this.question,required this.index,this.isCorrect=false});
 
+  @override
+  State<QuizItem> createState() => _QuizItemState();
+}
+
+class _QuizItemState extends State<QuizItem> {
   var answerController = TextEditingController();
+  int correctAnswerCounter=0;
+  bool correctAnswer=false;
+  bool wrongAnswer=false;
+  int wrongAnswerCounter=0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,18 +31,36 @@ class QuizItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text("${index+1}- ${question.question}",style: GoogleFonts.poppins(
-              color: Theme.of(context).indicatorColor,
-              fontWeight: FontWeight.w700,
-              fontSize: 18.sp),),
+          Row(
+            children: [
+              Text("${widget.index+1}- ${widget.question.question}",style: GoogleFonts.poppins(
+                  color: correctAnswer? Colors.green: wrongAnswer?Colors.red: Theme.of(context).indicatorColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18.sp),),
+              SizedBox(width: 200.w,),
+              correctAnswer?Icon(Icons.check,color:Colors.green,size: 35.sp,):const SizedBox.shrink(),
+              wrongAnswer? Icon(Icons.clear_rounded,color: Colors.red,size: 35.sp,):const SizedBox.shrink()
+            ],
+          ),
           SizedBox(height: 15.h,),
           TextFormField(
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Please answer this Question";
+            onFieldSubmitted: (value) {
+              if(value == widget.question.answer){
+                correctAnswer=true;
+                correctAnswerCounter+=1;
               }
-              return null;
+              else if(value != widget.question.answer){
+                wrongAnswer=true;
+                wrongAnswerCounter+=1;
+              }
             },
+            // validator: (value) {
+            //   if (value == widget.question.answer) {
+            //     correctAnswerCounter+=1;
+            //     return "Please answer this Question";
+            //   }
+            //   return null;
+            // },
             style: GoogleFonts.inter(
                 color: pro.themeMode == ThemeMode.light
                     ? Colors.black
@@ -44,7 +71,7 @@ class QuizItem extends StatelessWidget {
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),
-                borderSide: const BorderSide(color: primary),
+                borderSide: BorderSide(color: correctAnswer? Colors.green: wrongAnswer? Colors.red: primary,width: 2.w),
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.r),

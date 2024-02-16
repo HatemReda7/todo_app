@@ -1,23 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/Models/quiz_Model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:islami_app/Models/quiz_model.dart';
 import 'package:islami_app/tabs/tasks/quiz_item.dart';
 import '../../Shared/firebase/FireBase_Functions.dart';
+import 'quiz_result.dart';
 
-class QuizTab extends StatelessWidget {
+class QuizTab extends StatefulWidget {
   static const String routeName="QuizTab";
-  QuizTab();
+  const QuizTab({super.key});
+
+  @override
+  State<QuizTab> createState() => _QuizTabState();
+}
+
+class _QuizTabState extends State<QuizTab> {
+  int numberOfQuestions=0;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: Theme.of(context).cardColor),
-      height: 770,
+    return Card(
+      color: Theme.of(context).cardColor,
+      elevation: 0,
       child: Column(
         children: [
           StreamBuilder(stream: FirebaseFunctions.getQuestion(),
             builder: (context, snapshot) {
               List<QuestionModel> questions = snapshot.data?.docs.map((e) => e.data())
                   .toList() ?? [];
+              numberOfQuestions=questions.length;
               return Expanded(
                 child: ListView.builder(itemBuilder: (context, index) {
                   return Padding(
@@ -28,9 +39,17 @@ class QuizTab extends StatelessWidget {
               );
             },
           ),
-          ElevatedButton(onPressed: () {
-            Navigator.pop(context, (route) => false);
-          }, child: const Text("Finish Quiz"))
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(onPressed: () {
+              Navigator.pushReplacementNamed(context, QuizResult.routeName,arguments: numberOfQuestions);
+            },
+                style: const ButtonStyle(fixedSize: MaterialStatePropertyAll(Size(200, 40))),
+                child: Text("Finish Quiz",style: GoogleFonts.poppins(
+                    color: Theme.of(context).indicatorColor,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 18.sp),)),
+          )
         ],
       ),
     );

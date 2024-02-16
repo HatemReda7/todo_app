@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/tabs/tasks/quiz_tab.dart';
-import '../../Models/quiz_Model.dart';
+import '../../Models/quiz_model.dart';
 import '../../Shared/firebase/FireBase_Functions.dart';
-import '../../Shared/styles/Colors.dart';
-import 'Task_Item.dart';
+import '../../Shared/styles/colors.dart';
+import 'question_item.dart';
 
 class ToDOListTab extends StatefulWidget {
   static const String routeName="To DO List Tab";
@@ -37,7 +37,8 @@ class _ToDOListTabState extends State<ToDOListTab> {
                 fontSize: 22.sp,
                 fontWeight: FontWeight.w700,),),
               ElevatedButton(onPressed: () {
-              showSheet();
+              // showSheet();
+                Navigator.pushNamed(context, QuizTab.routeName);
               }, child:  const Text("Take Quiz!"))
             ],
           ),
@@ -68,8 +69,8 @@ class _ToDOListTabState extends State<ToDOListTab> {
       isScrollControlled: true,
       context: context, builder: (context) {
       return Padding(
-        padding:  EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-        child: QuizTab(),
+        padding:  EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom,),
+        child: const QuizTab(),
       );
     },);
   }
