@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami_app/tabs/FlashCard%20Quiz/quiz_tab.dart';
 import 'package:provider/provider.dart';
 import '../../Models/question_model.dart';
 import '../../Shared/firebase/firebase_functions.dart';
 import '../../Shared/styles/colors.dart';
 import '../../providers/my_provider.dart';
 import 'question_item.dart';
-import 'quiz_tab.dart';
 
 class FlashCardQuizTab extends StatefulWidget {
   static const String routeName="To DO List Tab";

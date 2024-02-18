@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import '../../Models/quiz_model.dart';
+import '../../Shared/firebase/firebase_functions.dart';
 import '../../providers/my_provider.dart';
 
 class QuizResult extends StatelessWidget {
@@ -37,9 +39,12 @@ class QuizResult extends StatelessWidget {
                 style: const ButtonStyle(
                     fixedSize: MaterialStatePropertyAll(Size(150, 40))),
                 onPressed: () {
+                  Navigator.pop(context);
+                  QuizModel quizModel=QuizModel(correctAnswersCounter: pro.quizScore, numOfQuestions: args);
+                  FirebaseFunctions.addScore(quizModel);
                   pro.changeCurrentScore(pro.quizScore);
                   pro.changeCurrentNumOfQuestions(args);
-                  Navigator.pop(context);
+
                 },
                 child: Text(
                   "Done!",

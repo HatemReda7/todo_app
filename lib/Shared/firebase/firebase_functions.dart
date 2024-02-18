@@ -16,7 +16,7 @@ class FirebaseFunctions {
   }
 
   static CollectionReference<QuizModel> getQuizCollection(){
-    return FirebaseFirestore.instance.collection("Quizes").withConverter<QuizModel>(
+    return FirebaseFirestore.instance.collection("Quizzes").withConverter<QuizModel>(
       fromFirestore: (snapshot, _) {
         return QuizModel.fromJson(snapshot.data()!);
       },
@@ -26,11 +26,17 @@ class FirebaseFunctions {
   }
 
   static void addScore(QuizModel quiz){
-    getQuizCollection().doc(quiz.id).update(quiz.toJson());
+    var collection= getQuizCollection();
+    var docRef= collection.doc();
+    quiz.id=docRef.id;
+    docRef.set(quiz);
+  }
+
+  static Stream<QuerySnapshot<QuizModel>> getQuizzes(){
+    return getQuizCollection().snapshots();
   }
 
   static void addQuestion(QuestionModel questionModel) {
-
     var collection= getQuestionCollection();
     var docRef= collection.doc();
     questionModel.id=docRef.id;
