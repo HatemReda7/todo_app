@@ -16,7 +16,7 @@ class FirebaseFunctions {
   }
 
   static CollectionReference<QuizModel> getQuizCollection(){
-    return FirebaseFirestore.instance.collection("Quiz").withConverter<QuizModel>(
+    return FirebaseFirestore.instance.collection("Quizes").withConverter<QuizModel>(
       fromFirestore: (snapshot, _) {
         return QuizModel.fromJson(snapshot.data()!);
       },
