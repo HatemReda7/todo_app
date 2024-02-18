@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islami_app/tabs/settings/quiz_score_tab.dart';
-import 'package:islami_app/tabs/tasks/add_question_bottomsheet.dart';
-import 'package:islami_app/tabs/tasks/flashcard_quiz_tab.dart';
+import 'package:islami_app/tabs/FlashCard%20Quiz/add_question_bottomsheet.dart';
+import '../tabs/FlashCard Quiz/flashcard_quiz_tab.dart';
+import '../tabs/Quiz Score Tab/quiz_score_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "Home Screen";
@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
               currentIndex: index,
               items: const [
              BottomNavigationBarItem(icon: Icon(Icons.list), label: ""),
-             BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
+             BottomNavigationBarItem(icon: Icon(Icons.bar_chart_outlined), label: "")
           ]),
         ),
       ),
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context, builder: (context) {
       return Padding(
         padding:  EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-        child: const AddTaskBottomSheet(),
+        child: const AddQuestionBottomSheet(),
       );
     },);
   }

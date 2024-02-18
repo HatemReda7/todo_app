@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Models/question_model.dart';
-import 'package:islami_app/tabs/tasks/quiz_item.dart';
 import '../../Shared/firebase/firebase_functions.dart';
+import 'quiz_item.dart';
 import 'quiz_result.dart';
 
 class QuizTab extends StatefulWidget {

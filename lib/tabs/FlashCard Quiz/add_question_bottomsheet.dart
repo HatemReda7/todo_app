@@ -5,14 +5,14 @@ import 'package:islami_app/Models/question_model.dart';
 import '../../Shared/firebase/firebase_functions.dart';
 import '../../Shared/styles/colors.dart';
 
-class AddTaskBottomSheet extends StatefulWidget {
-  const AddTaskBottomSheet({super.key});
+class AddQuestionBottomSheet extends StatefulWidget {
+  const AddQuestionBottomSheet({super.key});
 
   @override
-  State<AddTaskBottomSheet> createState() => _AddTaskBottomSheetState();
+  State<AddQuestionBottomSheet> createState() => _AddQuestionBottomSheetState();
 }
 
-class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
+class _AddQuestionBottomSheetState extends State<AddQuestionBottomSheet> {
   var questionController = TextEditingController();
   var answerController = TextEditingController();
   var formKey = GlobalKey<FormState>();

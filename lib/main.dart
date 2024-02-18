@@ -3,8 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islami_app/tabs/tasks/quiz_result.dart';
-import 'package:islami_app/tabs/tasks/quiz_tab.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Screens/homescreen.dart';
@@ -12,8 +10,10 @@ import 'Shared/styles/my_theme_data.dart';
 import 'firebase_options.dart';
 import 'preference_helper.dart';
 import 'providers/my_provider.dart';
-import 'tabs/settings/quiz_score_tab.dart';
-import 'tabs/tasks/flashcard_quiz_tab.dart';
+import 'tabs/FlashCard Quiz/flashcard_quiz_tab.dart';
+import 'tabs/FlashCard Quiz/quiz_result.dart';
+import 'tabs/FlashCard Quiz/quiz_tab.dart';
+import 'tabs/Quiz Score Tab/quiz_score_tab.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
