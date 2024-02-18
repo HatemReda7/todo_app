@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islami_app/preference_helper.dart';
 import 'package:islami_app/tabs/tasks/quiz_tab.dart';
 import 'package:provider/provider.dart';
 import '../../Models/question_model.dart';
