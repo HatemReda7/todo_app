@@ -19,15 +19,31 @@ class QuizScoreTab extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          height: 50.h,
-          width: 220.w,
-          margin: EdgeInsets.symmetric(vertical: 30.h),
+          height: 175.h,
+          width: 300.w,
+          padding: EdgeInsets.all(10.r),
+          margin: EdgeInsets.symmetric(vertical: 20.h),
           alignment: Alignment.center,
           decoration: BoxDecoration(color: Colors.blueAccent,borderRadius: BorderRadius.circular(12)),
-          child: Text("Current Score:  ${pro.quizScore}/${pro.numOfQuestions} ",style: GoogleFonts.poppins(
-              color: Theme.of(context).indicatorColor,
-              fontWeight: FontWeight.w700,
-              fontSize: 18.sp)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text("Current Score:  ${pro.quizScore}/${pro.numOfQuestions} ",style: GoogleFonts.poppins(
+                  color: Theme.of(context).indicatorColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18.sp)),
+              SizedBox(height: 10.h,),
+              Text("Total Number Of Correct Answers:  ${pro.totalNumOfCorrectAnswers} ",style: GoogleFonts.poppins(
+                  color: Theme.of(context).indicatorColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18.sp)),
+              SizedBox(height: 10.h,),
+              Text("Total Number Of Questions:  ${pro.totalNumOfQuestions} ",style: GoogleFonts.poppins(
+                  color: Theme.of(context).indicatorColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18.sp)),
+            ],
+          ),
         ),
         StreamBuilder(stream: FirebaseFunctions.getQuizzes(),
           builder: (context, snapshot) {

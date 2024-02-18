@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Models/quiz_model.dart';
 
 class QuizScoreItem extends StatelessWidget {
-  QuizModel quizModel;
-  QuizScoreItem({required this.quizModel,super.key});
+  final QuizModel quizModel;
+  const QuizScoreItem({required this.quizModel,super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -16,7 +16,7 @@ class FirebaseFunctions {
   }
 
   static CollectionReference<QuizModel> getQuizCollection(){
-    return FirebaseFirestore.instance.collection("Quizzes").withConverter<QuizModel>(
+    return FirebaseFirestore.instance.collection("Quiz").withConverter<QuizModel>(
       fromFirestore: (snapshot, _) {
         return QuizModel.fromJson(snapshot.data()!);
       },
@@ -45,10 +45,6 @@ class FirebaseFunctions {
 
   static void deleteQuestion(String id){
     getQuestionCollection().doc(id).delete();
-  }
-  
-  static void editQuestion(QuestionModel question){
-    getQuestionCollection().doc(question.id).update(question.toJson());
   }
 
   static Stream<QuerySnapshot<QuestionModel>> getQuestion(){

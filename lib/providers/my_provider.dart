@@ -4,8 +4,8 @@ import '../preference_helper.dart';
 class MyProvider extends ChangeNotifier{
   int quizScore=0;
   int numOfQuestions=0;
-  int previousNumOfQuestions=0;
-  int previousScore=0;
+  int totalNumOfQuestions=0;
+  int totalNumOfCorrectAnswers=0;
 
   void init()async{
     int? currentScore= PrefsHelper.getCurrentScore();
@@ -14,11 +14,11 @@ class MyProvider extends ChangeNotifier{
     int? currentNumOfQuestions= PrefsHelper.getCurrentNumOfQuestions();
     changeCurrentNumOfQuestions(currentNumOfQuestions??0);
 
-    int? prevScore= PrefsHelper.getPreviousScore();
-    changePreviousScore(prevScore??0);
+    int? totalNumOfQuestions= PrefsHelper.getTotalNumOfQuestions();
+    changeTotalNumOfQuestions(totalNumOfQuestions??0);
 
-    int? prevNumOfQuestions= PrefsHelper.getPreviousNumOfQuestions();
-    changePreviousNumOfQuestions(prevNumOfQuestions??0);
+    int? totalNumOfCorrectAnswers= PrefsHelper.getTotalNumOfCorrectAnswers();
+    changeTotalNumOfCorrectAnswers(totalNumOfCorrectAnswers??0);
   }
 
   void changeCurrentScore(int score){
@@ -33,15 +33,15 @@ class MyProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  void changePreviousNumOfQuestions(int num){
-    previousNumOfQuestions=num;
-    PrefsHelper.savePreviousNumOfQuestions(num);
+  void changeTotalNumOfQuestions(int num){
+    totalNumOfQuestions+=num;
+    PrefsHelper.saveTotalNumOfQuestions(num);
     notifyListeners();
   }
 
-  void changePreviousScore(int prevScore){
-    previousScore=prevScore;
-    PrefsHelper.savePreviousScore(prevScore);
+  void changeTotalNumOfCorrectAnswers(int num){
+    totalNumOfCorrectAnswers+=num;
+    PrefsHelper.saveTotalNumOfCorrectAnswers(num);
     notifyListeners();
   }
 }

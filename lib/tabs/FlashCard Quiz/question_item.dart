@@ -27,17 +27,6 @@ class QuestionItem extends StatelessWidget {
               icon: Icons.delete,
               label: AppLocalizations.of(context)!.delete,
             ),
-            // SlidableAction(
-            //   borderRadius: pro.languageCode=="ar"?BorderRadius.only(topLeft: Radius.circular(15.r), bottomLeft: Radius.circular(15.r))
-            //       :BorderRadius.only(topRight: Radius.circular(15.r), bottomRight: Radius.circular(15.r)),
-            //   onPressed: (context) {
-            //     Navigator.pushNamed(context, QuestionEdit.routeName,
-            //         arguments: QuestionModel(question: question.question, answer: question.answer));
-            //   },
-            //   backgroundColor: Colors.blue,
-            //   icon: Icons.edit,
-            //   label: AppLocalizations.of(context)!.edit,
-            // ),
           ]),
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 18.w),
@@ -77,14 +66,4 @@ class QuestionItem extends StatelessWidget {
       ),
     );
   }
-  //question.date<=DateTime.now().millisecondsSinceEpoch?Colors.red:Colors.blue;
-  // Color checkColor(){
-  //   if(question.isDone){
-  //     return const Color(0xff61E757);
-  //   }else if(question.date<=DateTime.now().subtract(const Duration(days: 1)).millisecondsSinceEpoch){
-  //     return Colors.red;
-  //   }else{
-  //     return Colors.blue;
-  //   }
-  // }
 }

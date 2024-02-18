@@ -41,8 +41,6 @@ class _FlashCardQuizTabState extends State<FlashCardQuizTab> {
                 fontWeight: FontWeight.w700,),),
               SizedBox(height: 5.h,),
               ElevatedButton(onPressed: () {
-                pro.changePreviousScore(pro.quizScore);
-                pro.changePreviousNumOfQuestions(pro.numOfQuestions);
                 pro.quizScore=0;
                 Navigator.pushNamed(context, QuizTab.routeName);
               },

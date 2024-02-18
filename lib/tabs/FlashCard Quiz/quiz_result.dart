@@ -42,6 +42,8 @@ class QuizResult extends StatelessWidget {
                   Navigator.pop(context);
                   QuizModel quizModel=QuizModel(correctAnswersCounter: pro.quizScore, numOfQuestions: args);
                   FirebaseFunctions.addScore(quizModel);
+                  pro.changeTotalNumOfCorrectAnswers(pro.quizScore);
+                  pro.changeTotalNumOfQuestions(args);
                   pro.changeCurrentScore(pro.quizScore);
                   pro.changeCurrentNumOfQuestions(args);
 
