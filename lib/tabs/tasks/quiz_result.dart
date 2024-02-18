@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami_app/preference_helper.dart';
 import 'package:provider/provider.dart';
 import '../../providers/my_provider.dart';
 
@@ -37,7 +38,8 @@ class QuizResult extends StatelessWidget {
                 style: const ButtonStyle(
                     fixedSize: MaterialStatePropertyAll(Size(150, 40))),
                 onPressed: () {
-                  pro.quizScore=0;
+                  pro.changeCurrentScore(pro.quizScore);
+                  pro.changeCurrentNumOfQuestions(args);
                   Navigator.pop(context);
                 },
                 child: Text(

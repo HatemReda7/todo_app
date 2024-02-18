@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islami_app/tabs/settings/settings_tab.dart';
+import 'package:islami_app/tabs/settings/quiz_score_tab.dart';
 import 'package:islami_app/tabs/tasks/add_question_bottomsheet.dart';
 import 'package:islami_app/tabs/tasks/flashcard_quiz_tab.dart';
 
@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Widget> tabs = [const ToDOListTab(), const SettingsTab()];
+  List<Widget> tabs = [const FlashCardQuizTab(), const QuizScoreTab()];
 
   int index=0;
 

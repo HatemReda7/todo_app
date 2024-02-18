@@ -12,7 +12,7 @@ import 'Shared/styles/my_theme_data.dart';
 import 'firebase_options.dart';
 import 'preference_helper.dart';
 import 'providers/my_provider.dart';
-import 'tabs/settings/settings_tab.dart';
+import 'tabs/settings/quiz_score_tab.dart';
 import 'tabs/tasks/flashcard_quiz_tab.dart';
 
 void main() async {
@@ -43,10 +43,10 @@ class MyApp extends StatelessWidget {
             initialRoute: HomeScreen.routeName,
             routes: {
               HomeScreen.routeName: (context) => const HomeScreen(),
-              SettingsTab.routeName: (context) => const SettingsTab(),
+              QuizScoreTab.routeName: (context) => const QuizScoreTab(),
               QuizTab.routeName: (context) =>  const QuizTab(),
               QuizResult.routeName: (context) =>  const QuizResult(),
-              ToDOListTab.routeName: (context) => const ToDOListTab(),
+              FlashCardQuizTab.routeName: (context) => const FlashCardQuizTab(),
               // QuestionEdit.routeName: (context) => const QuestionEdit(),
             },
             darkTheme: MyThemeData.darkTheme,

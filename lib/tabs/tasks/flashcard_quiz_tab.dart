@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami_app/preference_helper.dart';
 import 'package:islami_app/tabs/tasks/quiz_tab.dart';
+import 'package:provider/provider.dart';
 import '../../Models/question_model.dart';
 import '../../Shared/firebase/firebase_functions.dart';
 import '../../Shared/styles/colors.dart';
+import '../../providers/my_provider.dart';
 import 'question_item.dart';
 
-class ToDOListTab extends StatefulWidget {
+class FlashCardQuizTab extends StatefulWidget {
   static const String routeName="To DO List Tab";
 
-  const ToDOListTab({super.key});
+  const FlashCardQuizTab({super.key});
 
   @override
-  State<ToDOListTab> createState() => _ToDOListTabState();
+  State<FlashCardQuizTab> createState() => _FlashCardQuizTabState();
 }
 
-class _ToDOListTabState extends State<ToDOListTab> {
+class _FlashCardQuizTabState extends State<FlashCardQuizTab> {
 
   DateTime selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
+    var pro = Provider.of<MyProvider>(context);
     return Column(
       children: [
         Container(
@@ -38,6 +42,9 @@ class _ToDOListTabState extends State<ToDOListTab> {
                 fontWeight: FontWeight.w700,),),
               SizedBox(height: 5.h,),
               ElevatedButton(onPressed: () {
+                pro.changePreviousScore(pro.quizScore);
+                pro.changePreviousNumOfQuestions(pro.numOfQuestions);
+                pro.quizScore=0;
                 Navigator.pushNamed(context, QuizTab.routeName);
               },
                   style: const ButtonStyle(fixedSize: MaterialStatePropertyAll(Size(200, 40))),

@@ -18,10 +18,9 @@ class QuizItem extends StatefulWidget {
 
 class _QuizItemState extends State<QuizItem> {
   var answerController = TextEditingController();
-  int correctAnswerCounter=0;
+  bool answered=false;
   bool correctAnswer=false;
   bool wrongAnswer=false;
-  int wrongAnswerCounter=0;
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +32,8 @@ class _QuizItemState extends State<QuizItem> {
         children: [
           Row(
             children: [
-              Text("${widget.index+1}- ${widget.question.question}",style: GoogleFonts.poppins(
-                  color: correctAnswer? Colors.green: wrongAnswer?Colors.red: Theme.of(context).indicatorColor,
+              Text("${widget.index+1})  ${widget.question.question}",style: GoogleFonts.poppins(
+                  color: Theme.of(context).indicatorColor,
                   fontWeight: FontWeight.w700,
                   fontSize: 18.sp),),
               SizedBox(width: 200.w,),
@@ -43,16 +42,29 @@ class _QuizItemState extends State<QuizItem> {
             ],
           ),
           SizedBox(height: 15.h,),
-          TextFormField(
+          answered?Column(
+            children: [
+              Text("Your Answer:  ${answerController.text}",style: GoogleFonts.poppins(
+                  color: correctAnswer? Colors.green: wrongAnswer?Colors.red: Theme.of(context).indicatorColor,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16.sp)),
+              Text("Correct Answer:  ${widget.question.answer}",style: GoogleFonts.poppins(
+                  color: Theme.of(context).indicatorColor,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16.sp)),
+            ],
+          ): TextFormField(
             textInputAction: TextInputAction.done,
             onFieldSubmitted: (value) {
               if(value == widget.question.answer){
                 correctAnswer=true;
+                answered=true;
                 wrongAnswer=false;
                 pro.quizScore+=1;
               }
               else if(value != widget.question.answer){
                 wrongAnswer=true;
+                answered=true;
                 correctAnswer=false;
               }
               setState(() {
@@ -84,6 +96,7 @@ class _QuizItemState extends State<QuizItem> {
                   fontSize: 20.sp),
             ),
           ),
+          SizedBox(height: 10.h,)
         ],
       ),
     );
