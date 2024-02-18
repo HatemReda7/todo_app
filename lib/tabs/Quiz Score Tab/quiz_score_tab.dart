@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Models/quiz_model.dart';
+import 'package:islami_app/preference_helper.dart';
 import 'package:islami_app/tabs/Quiz%20Score%20Tab/quiz_score_item.dart';
 import 'package:provider/provider.dart';
 import '../../Shared/firebase/firebase_functions.dart';

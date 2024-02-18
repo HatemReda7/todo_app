@@ -12,7 +12,7 @@ class PrefsHelper {
   }
 
   static int? getTotalNumOfCorrectAnswers() {
-    return prefs.getInt("Total Num Of Questions");
+    return prefs.getInt("Total Num Of Correct Answers");
   }
 
   static saveTotalNumOfCorrectAnswers(int num) async {

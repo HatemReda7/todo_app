@@ -29,19 +29,19 @@ class MyProvider extends ChangeNotifier{
 
   void changeCurrentNumOfQuestions(int num){
     numOfQuestions=num;
-    PrefsHelper.saveCurrentScore(num);
+    PrefsHelper.saveCurrentNumOfQuestions(num);
     notifyListeners();
   }
 
   void changeTotalNumOfQuestions(int num){
     totalNumOfQuestions+=num;
-    PrefsHelper.saveTotalNumOfQuestions(num);
+    PrefsHelper.saveTotalNumOfQuestions(totalNumOfQuestions);
     notifyListeners();
   }
 
   void changeTotalNumOfCorrectAnswers(int num){
     totalNumOfCorrectAnswers+=num;
-    PrefsHelper.saveTotalNumOfCorrectAnswers(num);
+    PrefsHelper.saveTotalNumOfCorrectAnswers(totalNumOfCorrectAnswers);
     notifyListeners();
   }
 }
