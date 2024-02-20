@@ -36,7 +36,7 @@ class _QuizItemState extends State<QuizItem> {
                   color: Theme.of(context).indicatorColor,
                   fontWeight: FontWeight.w700,
                   fontSize: 18.sp),),
-              SizedBox(width: 200.w,),
+              const Spacer(),
               correctAnswer?Icon(Icons.check,color:Colors.green,size: 35.sp,):const SizedBox.shrink(),
               wrongAnswer? Icon(Icons.clear_rounded,color: Colors.red,size: 35.sp,):const SizedBox.shrink()
             ],
@@ -56,13 +56,13 @@ class _QuizItemState extends State<QuizItem> {
           ): TextFormField(
             textInputAction: TextInputAction.done,
             onFieldSubmitted: (value) {
-              if(value == widget.question.answer){
+              if(value.toLowerCase() == widget.question.answer.toLowerCase()){
                 correctAnswer=true;
                 answered=true;
                 wrongAnswer=false;
                 pro.quizScore+=1;
               }
-              else if(value != widget.question.answer){
+              else if(value.toLowerCase() != widget.question.answer.toLowerCase()){
                 wrongAnswer=true;
                 answered=true;
                 correctAnswer=false;
