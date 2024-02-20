@@ -47,7 +47,7 @@ class QuestionItem extends StatelessWidget {
                       question.question,
                       style: GoogleFonts.poppins(
                           color: Colors.blue,
-                          fontSize: 18.sp,
+                          fontSize: 16.sp,
                           fontWeight: FontWeight.w700),
                     ),
                     Text(

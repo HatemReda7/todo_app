@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:islami_app/Models/question_model.dart';
-
 import '../../Models/quiz_model.dart';
 
 class FirebaseFunctions {
@@ -16,13 +15,24 @@ class FirebaseFunctions {
   }
 
   static CollectionReference<QuizModel> getQuizCollection(){
-    return FirebaseFirestore.instance.collection("Quizes").withConverter<QuizModel>(
+    return FirebaseFirestore.instance.collection("Quizzes").withConverter<QuizModel>(
       fromFirestore: (snapshot, _) {
         return QuizModel.fromJson(snapshot.data()!);
       },
       toFirestore: (value, _) {
         return value.toJson();
       },);
+  }
+
+  static void deleteQuizCollection()async{
+    final instance = FirebaseFirestore.instance;
+    final batch = instance.batch();
+    var collection = instance.collection('Quizzes');
+    var snapshots = await collection.get();
+    for (var doc in snapshots.docs) {
+      batch.delete(doc.reference);
+    }
+    await batch.commit();
   }
 
   static void addScore(QuizModel quiz){
