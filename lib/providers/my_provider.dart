@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/preference_helper.dart';
+import '../preference_helper.dart';
 
 class MyProvider extends ChangeNotifier{
   String languageCode="en";

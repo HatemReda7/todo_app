@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:islami_app/Shared/styles/Colors.dart';
-import 'package:islami_app/providers/my_provider.dart';
+import '../../providers/my_provider.dart';
+import '/Shared/styles/Colors.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -27,7 +27,7 @@ class _SettingsTabState extends State<SettingsTab> {
           width: 413.w,
           height: 157.h,
           decoration: const BoxDecoration(
-            color: Color(0xff5D9CEC)
+              color: Color(0xff5D9CEC)
           ),
           child: Text(AppLocalizations.of(context)!.settings,style: GoogleFonts.poppins(color: Theme.of(context).shadowColor,fontSize: 22.sp,fontWeight: FontWeight.w700,),),
         ),
@@ -94,7 +94,7 @@ class _SettingsTabState extends State<SettingsTab> {
                   width: 319.w,
                   height: 48.h,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                      color: Colors.white,
                       border: Border.all(color: const Color(0xff5D9CEC),width: 2.w)
                   ),
                   child: Row(

@@ -19,7 +19,7 @@ class DefaultFirebaseOptions {
     if (kIsWeb) {
       throw UnsupportedError(
         'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
+            'you can reconfigure this by running the FlutterFire CLI again.',
       );
     }
     switch (defaultTargetPlatform) {
@@ -30,17 +30,17 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       default:
         throw UnsupportedError(
@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCwdR4ldvptJn8zst-zh4As73CmWzwiOJQ',
-    appId: '1:560672177585:android:ad2d4223b7daac77b91190',
-    messagingSenderId: '560672177585',
-    projectId: 'codealpha-flashcard-quiz-app',
-    storageBucket: 'codealpha-flashcard-quiz-app.appspot.com',
+    apiKey: 'AIzaSyCtzLzEA1JZjqvLzJWBRnQ5HY0QWq_fpiA',
+    appId: '1:142837731715:android:5185a95d15989da247e6b6',
+    messagingSenderId: '142837731715',
+    projectId: 'todo-app-fde18',
+    storageBucket: 'todo-app-fde18.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBRSr9eo2DCgT_ZUAoy1vPdpr_tmo4p5eA',
-    appId: '1:560672177585:ios:df3a6ac25745a841b91190',
-    messagingSenderId: '560672177585',
-    projectId: 'codealpha-flashcard-quiz-app',
-    storageBucket: 'codealpha-flashcard-quiz-app.appspot.com',
+    apiKey: 'AIzaSyClZXKgnkUn8lajVd_p0baMaYp8DgCatP8',
+    appId: '1:142837731715:ios:79455503d428c14f47e6b6',
+    messagingSenderId: '142837731715',
+    projectId: 'todo-app-fde18',
+    storageBucket: 'todo-app-fde18.appspot.com',
     iosBundleId: 'com.example.todoApp',
   );
 }

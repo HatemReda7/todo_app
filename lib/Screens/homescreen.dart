@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:islami_app/tabs/settings/Settings_Tab.dart';
-import 'package:islami_app/tabs/tasks/Add_Task_BottomSheet.dart';
-import 'package:islami_app/tabs/tasks/To_Do_List_Tab.dart';
+import '../tabs/settings/Settings_Tab.dart';
+import '../tabs/tasks/to_do_list_tab.dart';
+import '/tabs/tasks/Add_Task_BottomSheet.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "Home Screen";
@@ -28,16 +28,16 @@ class _HomeScreenState extends State<HomeScreen> {
         showSheet();
       },
         shape: CircleBorder(
-          side: BorderSide(color: Theme.of(context).cardColor,width: 3.w)
+            side: BorderSide(color: Theme.of(context).cardColor,width: 3.w)
         ),
-      child: Icon(Icons.add,size: 30.sp,),
+        child: Icon(Icons.add,size: 30.sp,),
       ),
       bottomNavigationBar: BottomAppBar(
         notchMargin: 8.r,
         height: 80.h,
         shape: const CircularNotchedRectangle(),
         child: BottomNavigationBar(
-          backgroundColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
             onTap: (value) {
               index=value;
               setState(() {
@@ -46,13 +46,13 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             currentIndex: index,
             items: const [
-           BottomNavigationBarItem(icon: Icon(Icons.list), label: ""),
-           BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
-        ]),
+              BottomNavigationBarItem(icon: Icon(Icons.list), label: ""),
+              BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
+            ]),
       ),
     );
   }
-  
+
   void showSheet(){
     showModalBottomSheet(
       isScrollControlled: true,

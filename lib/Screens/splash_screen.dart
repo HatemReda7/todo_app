@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:islami_app/Screens/homescreen.dart';
-import 'package:islami_app/providers/my_provider.dart';
 import 'package:provider/provider.dart';
+
+import '../providers/my_provider.dart';
+import 'homescreen.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String routeName = 'Splash';
@@ -24,7 +25,7 @@ class Splash extends State<SplashScreen> {
     var pro = Provider.of<MyProvider>(context);
     Timer(
         const Duration(seconds: 2),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+            () => Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) => const HomeScreen())));
 
     return MaterialApp(

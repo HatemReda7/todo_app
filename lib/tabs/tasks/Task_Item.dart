@@ -4,14 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../Models/quiz_Model.dart';
-import '../../Shared/firebase/FireBase_Functions.dart';
+import '../../Models/task_model.dart';
+import '../../Shared/firebase/firebase_functions.dart';
 import '../../providers/my_provider.dart';
 import 'TaskEditTab.dart';
 
 class TaskItem extends StatelessWidget {
-  final QuestionModel question;
-  const TaskItem({required this.question, super.key});
+  final TaskModel task;
+  const TaskItem({required this.task, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class TaskItem extends StatelessWidget {
               borderRadius: pro.languageCode=="en"?BorderRadius.only(topLeft: Radius.circular(15.r), bottomLeft: Radius.circular(15.r))
                   :BorderRadius.only(topRight: Radius.circular(15.r), bottomRight: Radius.circular(15.r)),
               onPressed: (context) {
-                FirebaseFunctions.deleteQuestion(question.id);
+                FirebaseFunctions.deleteTask(task.id);
               },
               backgroundColor: const Color(0xffEC4B4B),
               icon: Icons.delete,
@@ -37,7 +37,7 @@ class TaskItem extends StatelessWidget {
                   :BorderRadius.only(topRight: Radius.circular(15.r), bottomRight: Radius.circular(15.r)),
               onPressed: (context) {
                 Navigator.pushNamed(context, TaskEdit.routeName,
-                    arguments: QuestionModel(question: question.question, answer: question.answer));
+                    arguments: TaskModel(title: task.title,description: task.description,date: task.date,id: task.id,isDone: task.isDone));
               },
               backgroundColor: Colors.blue,
               icon: Icons.edit,
@@ -51,8 +51,8 @@ class TaskItem extends StatelessWidget {
                 Container(
                   height: 62.h,
                   width: 4.w,
-                  //question.isDone==false?primary:const Color(0xff61E757)
-                  decoration: BoxDecoration( color: Colors.blue,
+                  //task.isDone==false?primary:const Color(0xff61E757)
+                  decoration: BoxDecoration( color: checkColor(),
                     borderRadius: BorderRadius.circular(18.r),
                   ),
                 ),
@@ -61,32 +61,32 @@ class TaskItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      question.question,
+                      task.title,
                       style: GoogleFonts.poppins(
-                          color: Colors.blue,
+                          color: checkColor(),
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
-                      question.answer,
+                      task.description,
                       style: GoogleFonts.poppins(
-                          color: Colors.blue,
+                          color: checkColor(),
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400),
                     ),
                   ],
                 ),
                 const Spacer(),
-                question.isDone?InkWell(
+                task.isDone?InkWell(
                     onTap: () {
-                      question.isDone=false;
-                      FirebaseFunctions.editQuestion(question);
+                      task.isDone=false;
+                      FirebaseFunctions.editTask(task);
                     },
                     child: Text(AppLocalizations.of(context)!.done,style: TextStyle(color: const Color(0xff61E757),fontSize: 22.sp,fontWeight: FontWeight.w700),))
                     :InkWell(
                   onTap: () {
-                    question.isDone=true;
-                    FirebaseFunctions.editQuestion(question);
+                    task.isDone=true;
+                    FirebaseFunctions.editTask(task);
                   },
                   child: Container(
                       width: 69.w,
@@ -94,8 +94,7 @@ class TaskItem extends StatelessWidget {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.r),
-                          // color: checkColor()
-                        color: Colors.blue
+                          color: checkColor()
                       ),
                       child: Icon(Icons.check,size: 35.sp,color: Colors.white,fill: 0.5,)),
                 )
@@ -106,14 +105,14 @@ class TaskItem extends StatelessWidget {
       ),
     );
   }
-  //question.date<=DateTime.now().millisecondsSinceEpoch?Colors.red:Colors.blue;
-  // Color checkColor(){
-  //   if(question.isDone){
-  //     return const Color(0xff61E757);
-  //   }else if(question.date<=DateTime.now().subtract(const Duration(days: 1)).millisecondsSinceEpoch){
-  //     return Colors.red;
-  //   }else{
-  //     return Colors.blue;
-  //   }
-  // }
+  //task.date<=DateTime.now().millisecondsSinceEpoch?Colors.red:Colors.blue;
+  Color checkColor(){
+    if(task.isDone){
+      return const Color(0xff61E757);
+    }else if(task.date<=DateTime.now().subtract(const Duration(days: 1)).millisecondsSinceEpoch){
+      return Colors.red;
+    }else{
+      return Colors.blue;
+    }
+  }
 }
