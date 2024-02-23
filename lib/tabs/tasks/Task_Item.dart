@@ -5,13 +5,13 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Models/task_model.dart';
-import '../../Shared/firebase/firebase_functions.dart';
+import '../../Shared/FireBase/firebase_functions.dart';
 import '../../providers/my_provider.dart';
 import 'TaskEditTab.dart';
 
 class TaskItem extends StatelessWidget {
-  final TaskModel task;
-  const TaskItem({required this.task, super.key});
+  TaskModel task;
+  TaskItem({required this.task, super.key});
 
   @override
   Widget build(BuildContext context) {

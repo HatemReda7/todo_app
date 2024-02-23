@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../tabs/settings/Settings_Tab.dart';
-import '../tabs/tasks/to_do_list_tab.dart';
-import '/tabs/tasks/Add_Task_BottomSheet.dart';
+import '../tabs/tasks/To_Do_List_Tab.dart';
+import '../tabs/tasks/add_task_bottom_sheet.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "Home Screen";

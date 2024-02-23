@@ -5,15 +5,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Screens/splash_screen.dart';
 import 'Screens/homescreen.dart';
-import 'Shared/styles/myThemeData.dart';
+import 'Screens/splash_screen.dart';
+import 'Shared/styles/my_theme_data.dart';
 import 'firebase_options.dart';
 import 'preference_helper.dart';
 import 'providers/my_provider.dart';
 import 'tabs/settings/Settings_Tab.dart';
 import 'tabs/tasks/TaskEditTab.dart';
-import 'tabs/tasks/to_do_list_tab.dart';
+import 'tabs/tasks/To_Do_List_Tab.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

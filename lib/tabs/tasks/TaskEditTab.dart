@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Models/task_model.dart';
-import '../../Shared/firebase/firebase_functions.dart';
+import '../../Shared/FireBase/firebase_functions.dart';
 import '../../Shared/styles/Colors.dart';
 import '../../providers/my_provider.dart';
 

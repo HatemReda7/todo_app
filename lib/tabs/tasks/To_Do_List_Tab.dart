@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../../Models/task_model.dart';
-import '../../Shared/firebase/firebase_functions.dart';
+import '../../Shared/FireBase/firebase_functions.dart';
 import '../../Shared/styles/Colors.dart';
 import '../../providers/my_provider.dart';
 import 'Task_Item.dart';
